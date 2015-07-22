@@ -269,42 +269,82 @@ class ValidatorSpec : QuickSpec {
                 }
             }
 
-//            describe("isIPv6"){
-//                it("it should check if it is IPv6"){
-//                    expect(Validator.isIPv6("::1")).to(equal(true))
-//                    expect(Validator.isIPv6("2001:db8:0000:1:1:1:1:1")).to(equal(true))
-//                    expect(Validator.isIPv6("2001:41d0:2:a141::1")).to(equal(true))
-//                    expect(Validator.isIPv6("::ffff:127.0.0.1")).to(equal(true))
-//                    expect(Validator.isIPv6("::0000")).to(equal(true))
-//                    expect(Validator.isIPv6("0000::")).to(equal(true))
-//                    expect(Validator.isIPv6("1::")).to(equal(true))
-//                    expect(Validator.isIPv6("1111:1:1:1:1:1:1:1")).to(equal(true))
-//                    expect(Validator.isIPv6("fe80::a6db:30ff:fe98:e946")).to(equal(true))
-//                    expect(Validator.isIPv6("::")).to(equal(true))
-//                    expect(Validator.isIPv6("::ffff:127.0.0.1")).to(equal(true))
-//                    expect(Validator.isIPv6("0:0:0:0:0:ffff:127.0.0.1")).to(equal(true))
-//                    expect(Validator.isIPv6("")).to(equal(true))
-//
-//                    expect(Validator.isIPv6("abc")).to(equal(false))
-//                    expect(Validator.isIPv6("256.0.0.0")).to(equal(false))
-//                    expect(Validator.isIPv6("0.0.0.256")).to(equal(false))
-//                    expect(Validator.isIPv6("26.0.0.256")).to(equal(false))
-//                    expect(Validator.isIPv6("::banana")).to(equal(false))
-//                    expect(Validator.isIPv6("banana::")).to(equal(false))
-//                    expect(Validator.isIPv6("::1banana")).to(equal(false))
-//                    expect(Validator.isIPv6("::1::")).to(equal(false))
-//                    expect(Validator.isIPv6("1:")).to(equal(false))
-//                    expect(Validator.isIPv6(":1")).to(equal(false))
-//                    expect(Validator.isIPv6(":1:1:1::2")).to(equal(false))
-//                    expect(Validator.isIPv6("1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1")).to(equal(false))
-//                    expect(Validator.isIPv6("::11111")).to(equal(false))
-//                    expect(Validator.isIPv6("11111:1:1:1:1:1:1:1")).to(equal(false))
-//                    expect(Validator.isIPv6("2001:db8:0000:1:1:1:1::1")).to(equal(false))
-//                    expect(Validator.isIPv6("0:0:0:0:0:0:ffff:127.0.0.1")).to(equal(false))
-//                    expect(Validator.isIPv6("0:0:0:0:ffff:127.0.0.1")).to(equal(false))
-//
-//                }
-//            }
+            describe("isIPv6"){
+                it("it should check if it is IPv6"){
+                    expect(Validator.isIPv6("::1")).to(equal(true))
+                    expect(Validator.isIPv6("2001:db8:0000:1:1:1:1:1")).to(equal(true))
+                    expect(Validator.isIPv6("2001:41d0:2:a141::1")).to(equal(true))
+                    expect(Validator.isIPv6("::ffff:127.0.0.1")).to(equal(true))
+                    expect(Validator.isIPv6("::0000")).to(equal(true))
+                    expect(Validator.isIPv6("0000::")).to(equal(true))
+                    expect(Validator.isIPv6("1::")).to(equal(true))
+                    expect(Validator.isIPv6("1111:1:1:1:1:1:1:1")).to(equal(true))
+                    expect(Validator.isIPv6("fe80::a6db:30ff:fe98:e946")).to(equal(true))
+                    expect(Validator.isIPv6("::")).to(equal(true))
+                    expect(Validator.isIPv6("::ffff:127.0.0.1")).to(equal(true))
+                    expect(Validator.isIPv6("0:0:0:0:0:ffff:127.0.0.1")).to(equal(true))
+                    expect(Validator.isIPv6("")).to(equal(true))
+
+                    expect(Validator.isIPv6("abc")).to(equal(false))
+                    expect(Validator.isIPv6("256.0.0.0")).to(equal(false))
+                    expect(Validator.isIPv6("0.0.0.256")).to(equal(false))
+                    expect(Validator.isIPv6("26.0.0.256")).to(equal(false))
+                    expect(Validator.isIPv6("::banana")).to(equal(false))
+                    expect(Validator.isIPv6("banana::")).to(equal(false))
+                    expect(Validator.isIPv6("::1banana")).to(equal(false))
+                    expect(Validator.isIPv6("::1::")).to(equal(false))
+                    expect(Validator.isIPv6("1:")).to(equal(false))
+                    expect(Validator.isIPv6(":1")).to(equal(false))
+                    expect(Validator.isIPv6(":1:1:1::2")).to(equal(false))
+                    expect(Validator.isIPv6("1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1")).to(equal(false))
+                    expect(Validator.isIPv6("::11111")).to(equal(false))
+                    expect(Validator.isIPv6("11111:1:1:1:1:1:1:1")).to(equal(false))
+                    expect(Validator.isIPv6("2001:db8:0000:1:1:1:1::1")).to(equal(false))
+                    expect(Validator.isIPv6("0:0:0:0:0:0:ffff:127.0.0.1")).to(equal(false))
+                    expect(Validator.isIPv6("0:0:0:0:ffff:127.0.0.1")).to(equal(false))
+
+                }
+            }
+
+            describe("isIP"){
+                it("should check if it is IP"){
+                    expect(Validator.isIP("::1")).to(equal(true))
+                    expect(Validator.isIP("2001:db8:0000:1:1:1:1:1")).to(equal(true))
+                    expect(Validator.isIP("2001:41d0:2:a141::1")).to(equal(true))
+                    expect(Validator.isIP("::ffff:127.0.0.1")).to(equal(true))
+                    expect(Validator.isIP("::0000")).to(equal(true))
+                    expect(Validator.isIP("0000::")).to(equal(true))
+                    expect(Validator.isIP("1::")).to(equal(true))
+                    expect(Validator.isIP("1111:1:1:1:1:1:1:1")).to(equal(true))
+                    expect(Validator.isIP("fe80::a6db:30ff:fe98:e946")).to(equal(true))
+                    expect(Validator.isIP("::")).to(equal(true))
+                    expect(Validator.isIP("::ffff:127.0.0.1")).to(equal(true))
+                    expect(Validator.isIP("0:0:0:0:0:ffff:127.0.0.1")).to(equal(true))
+                    expect(Validator.isIP("")).to(equal(true))
+
+                    expect(Validator.isIP("abc")).to(equal(false))
+                    expect(Validator.isIP("256.0.0.0")).to(equal(false))
+                    expect(Validator.isIP("0.0.0.256")).to(equal(false))
+                    expect(Validator.isIP("26.0.0.256")).to(equal(false))
+                    expect(Validator.isIP("::banana")).to(equal(false))
+                    expect(Validator.isIP("banana::")).to(equal(false))
+                    expect(Validator.isIP("::1banana")).to(equal(false))
+                    expect(Validator.isIP("::1::")).to(equal(false))
+                    expect(Validator.isIP("1:")).to(equal(false))
+                    expect(Validator.isIP(":1")).to(equal(false))
+                    expect(Validator.isIP(":1:1:1::2")).to(equal(false))
+                    expect(Validator.isIP("1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1")).to(equal(false))
+                    expect(Validator.isIP("::11111")).to(equal(false))
+                    expect(Validator.isIP("11111:1:1:1:1:1:1:1")).to(equal(false))
+                    expect(Validator.isIP("2001:db8:0000:1:1:1:1::1")).to(equal(false))
+                    expect(Validator.isIP("0:0:0:0:0:0:ffff:127.0.0.1")).to(equal(false))
+                    expect(Validator.isIP("0:0:0:0:ffff:127.0.0.1")).to(equal(false))
+
+                    expect(Validator.isIP("192.123.23.0")).to(equal(true))
+                    expect(Validator.isIP("192.123.23.257")).to(equal(false))
+                    
+                }
+            }
             
             describe("isISBN"){
                 it("it should check if it is ISBN"){

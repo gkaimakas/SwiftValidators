@@ -175,6 +175,10 @@ public class Validator {
         return Validator.defaultValidator.isIPv6
     }
 
+    public static var isIP: Validation {
+        return Validator.defaultValidator.isIP
+    }
+
     public static func isISBN(version: String) -> Validation {
         return Validator.defaultValidator.isISBN(version)
     }
@@ -560,20 +564,21 @@ public class Validator {
         return {
             (value: String) in
             var string: String = self.removeDashes(self.removeSpaces(value))
+
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-
-            var blocks = split(string) {
-                $0 == ":"
-            }
+            
+            var blocks = split(string, allowEmptySlices: true) {$0 == ":"}
+        
             var foundOmissionBlock = false // marker to indicate ::
 
             // At least some OS accept the last 32 bits of an IPv6 address
             // (i.e. 2 of the blocks) in IPv4 notation, and RFC 3493 says
             // that '::ffff:a.b.c.d' is valid for IPv4-mapped IPv6 addresses,
             // and '::a.b.c.d' is deprecated, but also valid.
-            let foundIPv4TransitionBlock = (count(blocks) > 0 ? self.isIPv4(blocks[count(blocks) - 1]) : false)
+            let validator: Validator = Validator(emptyMode: .Strict)
+            let foundIPv4TransitionBlock = (count(blocks) > 0 ? validator.isIPv4(blocks[count(blocks) - 1]) : false)
             let expectedNumberOfBlocks = (foundIPv4TransitionBlock ? 7 : 8)
 
             if (count(blocks) > expectedNumberOfBlocks) {
@@ -583,12 +588,12 @@ public class Validator {
             if (string == "::") {
                 return true
             } else if (string.substringToIndex(advance(string.startIndex, 2)) == "::") {
-//                blocks.removeAtIndex(0)
-//                blocks.removeAtIndex(0)
+                blocks.removeAtIndex(0)
+                blocks.removeAtIndex(0)
                 foundOmissionBlock = true
-            } else if (string.substringToIndex(advance(string.endIndex, -2)) == "::") {
-//                blocks.removeLast()
-//                blocks.removeLast()
+            } else if (String(reverse(string)).substringToIndex(advance(string.startIndex, 2)) == "::") {
+                blocks.removeLast()
+                blocks.removeLast()
                 foundOmissionBlock = true
             }
 
@@ -597,9 +602,10 @@ public class Validator {
                     if (foundOmissionBlock) {
                         return false
                     }
+                    foundOmissionBlock = true
                 } else if (foundIPv4TransitionBlock && i == count(blocks) - 1) {
 
-                } else if (self.regexTest(Validator.IPRegex["6"]!, value: blocks[i]) == true) {
+                } else if (!self.regexTest(Validator.IPRegex["6"]!, value: blocks[i])) {
                     return false
                 }
             }
@@ -609,6 +615,13 @@ public class Validator {
             } else {
                 return count(blocks) == expectedNumberOfBlocks
             }
+        }
+    }
+
+    public var isIP: Validation {
+        return {
+            (value: String) in
+            return self.isIPv4(value) || self.isIPv6(value)
         }
     }
 
