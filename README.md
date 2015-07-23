@@ -63,7 +63,7 @@ When custom behaviour is needed you can create a validator instance and configur
 ### Supported validators
 
 Name | Description | Type | Arguments | Example
--|-|-|-|-
+--|--|--|--|--
  contains | checks if it is contained in the seed | func | String | Validator.contains("some seed")("ee")
  equals | checks if it an email | var | - | Validator.isEmail("gkaimakas@gmail.com") 
  exactLength | checks if it has the exact length | func |  Int | Validator.exactLength(2)("aa")
