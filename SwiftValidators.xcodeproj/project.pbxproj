@@ -11,6 +11,8 @@
 		131584D11B5FFCB60077E959 /* SwiftValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131584C51B5FFCB60077E959 /* SwiftValidators.framework */; };
 		131584D81B5FFCB60077E959 /* SwiftValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131584D71B5FFCB60077E959 /* SwiftValidatorsTests.swift */; };
 		131584E21B5FFD7F0077E959 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131584E11B5FFD7F0077E959 /* Validator.swift */; };
+		13F182731B60F277003F3443 /* ExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F182721B60F277003F3443 /* ExtensionTest.swift */; };
+		D73D6E5F64547D2C5557336A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73D6757670941DC51ADBD44 /* Extensions.swift */; };
 		FFA01A3BC9BFC00F54CFCD27 /* Pods_SwiftValidatorsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D590C794FFC3FF9BF8D6D1C9 /* Pods_SwiftValidatorsTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -33,8 +35,10 @@
 		131584D61B5FFCB60077E959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		131584D71B5FFCB60077E959 /* SwiftValidatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftValidatorsTests.swift; sourceTree = "<group>"; };
 		131584E11B5FFD7F0077E959 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		13F182721B60F277003F3443 /* ExtensionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTest.swift; sourceTree = "<group>"; };
 		5F12C8F44A0B081C221B029B /* Pods-SwiftValidatorsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidatorsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidatorsTests/Pods-SwiftValidatorsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D590C794FFC3FF9BF8D6D1C9 /* Pods_SwiftValidatorsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidatorsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D73D6757670941DC51ADBD44 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 				131584CA1B5FFCB60077E959 /* SwiftValidators.h */,
 				131584C81B5FFCB60077E959 /* Supporting Files */,
 				131584E11B5FFD7F0077E959 /* Validator.swift */,
+				D73D6757670941DC51ADBD44 /* Extensions.swift */,
 			);
 			path = SwiftValidators;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 			children = (
 				131584D71B5FFCB60077E959 /* SwiftValidatorsTests.swift */,
 				131584D51B5FFCB60077E959 /* Supporting Files */,
+				13F182721B60F277003F3443 /* ExtensionTest.swift */,
 			);
 			path = SwiftValidatorsTests;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				131584E21B5FFD7F0077E959 /* Validator.swift in Sources */,
+				D73D6E5F64547D2C5557336A /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F182731B60F277003F3443 /* ExtensionTest.swift in Sources */,
 				131584D81B5FFCB60077E959 /* SwiftValidatorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

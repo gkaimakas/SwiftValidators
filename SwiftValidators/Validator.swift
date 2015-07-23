@@ -17,6 +17,20 @@ public class Validator {
         case Strict     // if set to Strict validation fails for "" (empty string)
     }
 
+    public class FQDNOptions {
+        public static let defaultOptions: FQDNOptions = FQDNOptions(requireTLD: true, allowUnderscores: false, allowTrailingDot: false)
+
+        public let requireTLD: Bool
+        public let allowUnderscores: Bool
+        public let allowTrailingDot: Bool
+
+        public init(requireTLD: Bool, allowUnderscores: Bool, allowTrailingDot: Bool) {
+            self.requireTLD = requireTLD
+            self.allowUnderscores = allowUnderscores
+            self.allowTrailingDot = allowTrailingDot
+        }
+    }
+
     // Singleton with default values for easy use. For more configuration options
     // create a new instance
     public static let defaultValidator: Validator = Validator()
@@ -195,21 +209,25 @@ public class Validator {
         return Validator.defaultValidator.isAlphanumeric
     }
 
+    public static func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
+        return Validator.defaultValidator.isFQDN(options)
+    }
+
     // ------------------------ //
     // ------------------------ //
     // ------------------------ //
 
-    init() {
+    public init() {
         self.validationMode = .Default
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
     }
 
-    init(emptyMode: ValidationMode) {
+    public init(emptyMode: ValidationMode) {
         self.validationMode = emptyMode
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
     }
 
-    init(emptyMode: ValidationMode, dateFormat: String) {
+    public init(emptyMode: ValidationMode, dateFormat: String) {
         self.validationMode = emptyMode
         self.dateFormatter.dateFormat = dateFormat
     }
@@ -516,7 +534,7 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
             var newValue = value.uppercaseString
-            return self.regexTest(Validator.HexadecimalRegex, value: newValue)
+            return self.regexTest(Validator.HexadecimalRegex, newValue)
         }
     }
 
@@ -526,7 +544,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.ASCIIRegex, value: value)
+            return self.regexTest(Validator.ASCIIRegex, value)
         }
     }
 
@@ -536,7 +554,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.NumericRegex, value: value)
+            return self.regexTest(Validator.NumericRegex, value)
         }
     }
 
@@ -546,7 +564,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.PhoneRegex[locale]!, value: value)
+            return self.regexTest(Validator.PhoneRegex[locale]!, value)
         }
     }
 
@@ -556,7 +574,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.IPRegex["4"]!, value: value)
+            return self.regexTest(Validator.IPRegex["4"]!, value)
         }
     }
 
@@ -568,9 +586,11 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            
-            var blocks = split(string, allowEmptySlices: true) {$0 == ":"}
-        
+
+            var blocks = split(string, allowEmptySlices: true) {
+                $0 == ":"
+            }
+
             var foundOmissionBlock = false // marker to indicate ::
 
             // At least some OS accept the last 32 bits of an IPv6 address
@@ -605,7 +625,7 @@ public class Validator {
                     foundOmissionBlock = true
                 } else if (foundIPv4TransitionBlock && i == count(blocks) - 1) {
 
-                } else if (!self.regexTest(Validator.IPRegex["6"]!, value: blocks[i])) {
+                } else if (!self.regexTest(Validator.IPRegex["6"]!, blocks[i])) {
                     return false
                 }
             }
@@ -633,7 +653,7 @@ public class Validator {
             }
             var sanitized = self.removeDashes(value)
             sanitized = self.removeSpaces(sanitized)
-            let regexTest: Bool = self.regexTest(Validator.ISBNRegex[version]!, value: sanitized)
+            let regexTest: Bool = self.regexTest(Validator.ISBNRegex[version]!, sanitized)
             if (regexTest == false) {
                 return false
             }
@@ -678,7 +698,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.FloatRegex, value: value)
+            return self.regexTest(Validator.FloatRegex, value)
         }
     }
 
@@ -698,7 +718,52 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.AlphanumericRegex, value: value)
+            return self.regexTest(Validator.AlphanumericRegex, value)
+        }
+    }
+
+    public func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            var string = value
+            if (options.allowTrailingDot && string.lastCharacter == ".") {
+                string = string[0 ..< string.length]
+            }
+
+            var parts = split(string, allowEmptySlices: true) {
+                $0 == "."
+            }
+
+            if (options.requireTLD) {
+                var tld = parts.removeLast()
+                if( count(parts) == 0 || !self.regexTest("([a-z\u{00a1}-\u{ffff}]{2,}|xn[a-z0-9-]{2,})", tld) ){
+                    return false
+                }
+            }
+
+            for part in parts {
+                var _part = part
+                if(options.allowUnderscores){
+                    if(self.regexTest("__", _part)){
+                        return false
+                    }
+                }
+                _part = self.removeUnderscores(_part)
+
+                if(!self.regexTest("[a-z\u{00a1}-\u{ffff0}-9-]+", _part)){
+                    return false
+                }
+
+                if(_part[0] == "-" || _part.lastCharacter == "-" || self.regexTest("---", _part)){
+                    return false
+                }
+            }
+
+            return true
         }
     }
 
@@ -714,11 +779,15 @@ public class Validator {
         return self.removeCharacter(value, char: "-")
     }
 
+    private func removeUnderscores(value: String) -> String{
+        return self.removeCharacter(value, char: "_")
+    }
+
     private func removeCharacter(value: String, char: String) -> String {
         return value.stringByReplacingOccurrencesOfString(char, withString: "")
     }
 
-    private func regexTest(regex: String, value: String) -> Bool {
+    private func regexTest(regex: String, _ value: String) -> Bool {
         return NSPredicate(format: "SELF MATCHES %@", regex).evaluateWithObject(value)
     }
 }
