@@ -31,6 +31,8 @@ public class Validator {
         }
     }
 
+    public static let defaultDateFormat: String = "dd/MM/yyyy"
+
     // Singleton with default values for easy use. For more configuration options
     // create a new instance
     public static let defaultValidator: Validator = Validator()
@@ -70,12 +72,12 @@ public class Validator {
 
 
     // Static validators the use the default configuration
-    public static func equals(string: String) -> Validation {
-        return Validator.defaultValidator.equals(string)
+    public static func equals(seed: String) -> Validation {
+        return Validator.defaultValidator.equals(seed)
     }
 
-    public static func contains(string: String) -> Validation {
-        return Validator.defaultValidator.contains(string)
+    public static func contains(seed: String) -> Validation {
+        return Validator.defaultValidator.contains(seed)
     }
 
     public static var isUppercase: Validation {
@@ -219,16 +221,16 @@ public class Validator {
 
     public init() {
         self.validationMode = .Default
-        self.dateFormatter.dateFormat = "dd/MM/yyyy"
+        self.dateFormatter.dateFormat = Validator.defaultDateFormat
     }
 
-    public init(emptyMode: ValidationMode) {
-        self.validationMode = emptyMode
-        self.dateFormatter.dateFormat = "dd/MM/yyyy"
+    public init(validationMode: ValidationMode) {
+        self.validationMode = validationMode
+        self.dateFormatter.dateFormat = Validator.defaultDateFormat
     }
 
-    public init(emptyMode: ValidationMode, dateFormat: String) {
-        self.validationMode = emptyMode
+    public init(validationMode: ValidationMode, dateFormat: String) {
+        self.validationMode = validationMode
         self.dateFormatter.dateFormat = dateFormat
     }
 
