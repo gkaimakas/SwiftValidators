@@ -61,6 +61,7 @@ When custom behaviour is needed you can create a validator instance and configur
 
 
 ### Supported validators
+dsfsg
 
 Name | Description | Type | Arguments | Example
 --|--|--|--|--
@@ -68,8 +69,6 @@ Name | Description | Type | Arguments | Example
  equals | checks if it an email | var | - | Validator.isEmail("gkaimakas@gmail.com") 
  exactLength | checks if it has the exact length | func |  Int | Validator.exactLength(2)("aa")
  isASCII | checks if it is valid ascii string | var | - | Validator.isASCII("SDGSFG")
- 
- 
  isAfter | checks if it is after the date | func | String | Validator.isAfter("23/07/2015")("24/07/2015")
  isAlpha|checks if it has only letters|var|-|Validator.isAlpha("abc")
  isAlphanumeric|chacks if it has letters and numbers only|var|-|Validator.isAlphanumaric("abc123")
