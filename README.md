@@ -43,7 +43,7 @@ The validator class exposes each validator as a static member of the class. To d
 Currently there are only two configuration options
 
 Option | Values | Description | Default Value
--|-|-|-
+-------|--------|-------------|---------------
 validationMode | ValidationMode | An enum that confugures the behaviour when validating an empty string (""). If set to .Default empty strings are considered valid. If set to .Strict empty strings are considered invalid. | .Default
 dateFormat | String | When using date validators (isDate, isBefore, isAfter) the date format is used to convert the string to an NSDate object. | "dd/MM/yyyy"
 
