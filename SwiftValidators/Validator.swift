@@ -207,18 +207,10 @@ public class Validator {
     public static func minLength(length: Int) -> Validation {
         return Validator.defaultValidator.minLength(length)
     }
-    
+
     public static var required: Validation {
         return Validator.defaultValidator.required
     }
-
-
-
-
-
-
-
-
 
 
     // ------------------------ //
@@ -243,15 +235,6 @@ public class Validator {
     public let validationMode: ValidationMode
     public let dateFormatter = NSDateFormatter()
 
-    public func equals(string: String) -> Validation {
-        return {
-            (value: String) -> Bool in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return value == string
-        }
-    }
 
     public func contains(string: String) -> Validation {
         return {
@@ -263,82 +246,33 @@ public class Validator {
         }
     }
 
-    public var isUppercase: Validation {
+    public func equals(string: String) -> Validation {
         return {
             (value: String) -> Bool in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-
-            return value == value.uppercaseString
+            return value == string
         }
     }
 
-    public var isLowercase: Validation {
+    public func exactLength(length: Int) -> Validation {
         return {
             (value: String) -> Bool in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-
-            return value == value.lowercaseString
+            return count(value) == length ? true : false
         }
     }
 
-    public func isIn(array: Array<String>) -> Validation {
+    public var isASCII: Validation {
         return {
-            (value: String) -> Bool in
+            (value: String) in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-
-            if let index = find(array, value) {
-                return true
-            } else {
-                return false
-            }
-        }
-    }
-
-    public func isBefore(date: String) -> Validation {
-        let startDate: NSDate? = self.dateFormatter.dateFromString(date)
-        return {
-            (value: String) -> Bool in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            var date: NSDate? = self.dateFormatter.dateFromString(value)
-            if let _date = date {
-                var comparison = _date.compare(startDate!)
-                switch (comparison) {
-                case NSComparisonResult.OrderedAscending:
-                    return true
-                case NSComparisonResult.OrderedSame:
-                    return true
-                case NSComparisonResult.OrderedDescending:
-                    return false
-                }
-            } else {
-                return false
-            }
-
-        }
-    }
-
-    public var isDate: Validation {
-        return {
-            (value: String) -> Bool in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-
-            var date: NSDate? = self.dateFormatter.dateFromString(value)
-            if let _date = date {
-                return true
-            } else {
-                return false
-            }
-
+            return self.regexTest(Validator.ASCIIRegex, value)
         }
     }
 
@@ -367,6 +301,106 @@ public class Validator {
         }
     }
 
+    public var isAlpha: Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            var test = NSPredicate(format: "SELF MATCHES %@", Validator.ΑlphaRegex)
+            return test.evaluateWithObject(value)
+        }
+    }
+
+    public var isAlphanumeric: Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            return self.regexTest(Validator.AlphanumericRegex, value)
+        }
+    }
+
+    public var isBase64: Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            var test = NSPredicate(format: "SELF MATCHES %@", Validator.Βase64Regex)
+            return test.evaluateWithObject(value)
+        }
+    }
+
+    public func isBefore(date: String) -> Validation {
+        let startDate: NSDate? = self.dateFormatter.dateFromString(date)
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            var date: NSDate? = self.dateFormatter.dateFromString(value)
+            if let _date = date {
+                var comparison = _date.compare(startDate!)
+                switch (comparison) {
+                case NSComparisonResult.OrderedAscending:
+                    return true
+                case NSComparisonResult.OrderedSame:
+                    return true
+                case NSComparisonResult.OrderedDescending:
+                    return false
+                }
+            } else {
+                return false
+            }
+
+        }
+    }
+
+    public var isBool: Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            return self.isTrue(value) || self.isFalse(value)
+        }
+    }
+
+    public var isCreditCard: Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            var test = NSPredicate(format: "SELF MATCHES %@", Validator.CreditCardRegex)
+            var clearValue = self.removeDashes(value)
+            clearValue = self.removeSpaces(clearValue)
+            return test.evaluateWithObject(clearValue)
+        }
+    }
+
+    public var isDate: Validation {
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            var date: NSDate? = self.dateFormatter.dateFromString(value)
+            if let _date = date {
+                return true
+            } else {
+                return false
+            }
+
+        }
+    }
+
     public var isEmail: Validation {
         return {
             (value: String) -> Bool in
@@ -387,24 +421,48 @@ public class Validator {
         }
     }
 
-    public var isBool: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.isTrue(value) || self.isFalse(value)
-        }
-    }
-
-    public var isTrue: Validation {
+    public func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
         return {
             (value: String) in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            return value.lowercaseString == "true"
+            var string = value
+            if (options.allowTrailingDot && string.lastCharacter == ".") {
+                string = string[0 ..< string.length]
+            }
+
+            var parts = split(string, allowEmptySlices: true) {
+                $0 == "."
+            }
+
+            if (options.requireTLD) {
+                var tld = parts.removeLast()
+                if (count(parts) == 0 || !self.regexTest("([a-z\u{00a1}-\u{ffff}]{2,}|xn[a-z0-9-]{2,})", tld) ){
+                    return false
+                }
+            }
+
+            for part in parts {
+                var _part = part
+                if (options.allowUnderscores) {
+                    if (self.regexTest("__", _part)) {
+                        return false
+                    }
+                }
+                _part = self.removeUnderscores(_part)
+
+                if (!self.regexTest("[a-z\u{00a1}-\u{ffff0}-9-]+", _part)){
+                    return false
+                }
+
+                if (_part[0] == "-" || _part.lastCharacter == "-" || self.regexTest("---", _part)) {
+                    return false
+                }
+            }
+
+            return true
         }
     }
 
@@ -419,105 +477,13 @@ public class Validator {
         }
     }
 
-    public var isInt: Validation {
-        return {
-            (value: String) -> Bool in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.isNumeric(value)
-        }
-    }
-
-    public func minLength(length: Int) -> Validation {
-        return {
-            (value: String) -> Bool in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return count(value) >= length ? true : false
-        }
-    }
-
-    public func maxLength(length: Int) -> Validation {
-        return {
-            (value: String) -> Bool in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return count(value) <= length ? true : false
-        }
-    }
-
-    public func exactLength(length: Int) -> Validation {
-        return {
-            (value: String) -> Bool in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return count(value) == length ? true : false
-        }
-    }
-
-    public var required: Validation {
-        return {
-            (value: String) in
-            return value != ""
-        }
-    }
-
-    public var isUUID: Validation {
+    public var isFloat: Validation {
         return {
             (value: String) in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-
-            var uuid = NSUUID(UUIDString: value)
-            if let _uuid = uuid {
-                return true
-            }
-
-            return false
-
-        }
-    }
-
-    public var isAlpha: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-
-            var test = NSPredicate(format: "SELF MATCHES %@", Validator.ΑlphaRegex)
-            return test.evaluateWithObject(value)
-        }
-    }
-
-    public var isBase64: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-
-            var test = NSPredicate(format: "SELF MATCHES %@", Validator.Βase64Regex)
-            return test.evaluateWithObject(value)
-        }
-    }
-
-    public var isCreditCard: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-
-            var test = NSPredicate(format: "SELF MATCHES %@", Validator.CreditCardRegex)
-            var clearValue = self.removeDashes(value)
-            clearValue = self.removeSpaces(clearValue)
-            return test.evaluateWithObject(clearValue)
+            return self.regexTest(Validator.FloatRegex, value)
         }
     }
 
@@ -546,33 +512,10 @@ public class Validator {
         }
     }
 
-    public var isASCII: Validation {
+    public var isIP: Validation {
         return {
             (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.regexTest(Validator.ASCIIRegex, value)
-        }
-    }
-
-    public var isNumeric: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.regexTest(Validator.NumericRegex, value)
-        }
-    }
-
-    public func isPhone(locale: String) -> Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.regexTest(Validator.PhoneRegex[locale]!, value)
+            return self.isIPv4(value) || self.isIPv6(value)
         }
     }
 
@@ -646,13 +589,6 @@ public class Validator {
         }
     }
 
-    public var isIP: Validation {
-        return {
-            (value: String) in
-            return self.isIPv4(value) || self.isIPv6(value)
-        }
-    }
-
     public func isISBN(version: String) -> Validation {
         return {
             (value: String) in
@@ -700,13 +636,39 @@ public class Validator {
         }
     }
 
-    public var isFloat: Validation {
+    public func isIn(array: Array<String>) -> Validation {
         return {
-            (value: String) in
+            (value: String) -> Bool in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.FloatRegex, value)
+
+            if let index = find(array, value) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+
+    public var isInt: Validation {
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            return self.isNumeric(value)
+        }
+    }
+
+    public var isLowercase: Validation {
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            return value == value.lowercaseString
         }
     }
 
@@ -720,60 +682,92 @@ public class Validator {
         }
     }
 
-    public var isAlphanumeric: Validation {
+    public var isNumeric: Validation {
         return {
             (value: String) in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.regexTest(Validator.AlphanumericRegex, value)
+            return self.regexTest(Validator.NumericRegex, value)
         }
     }
 
-    public func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
+    public func isPhone(locale: String) -> Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            return self.regexTest(Validator.PhoneRegex[locale]!, value)
+        }
+    }
+
+    public var isTrue: Validation {
         return {
             (value: String) in
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var string = value
-            if (options.allowTrailingDot && string.lastCharacter == ".") {
-                string = string[0 ..< string.length]
-            }
-
-            var parts = split(string, allowEmptySlices: true) {
-                $0 == "."
-            }
-
-            if (options.requireTLD) {
-                var tld = parts.removeLast()
-                if (count(parts) == 0 || !self.regexTest("([a-z\u{00a1}-\u{ffff}]{2,}|xn[a-z0-9-]{2,})", tld) ){
-                    return false
-                }
-            }
-
-            for part in parts {
-                var _part = part
-                if (options.allowUnderscores) {
-                    if (self.regexTest("__", _part)) {
-                        return false
-                    }
-                }
-                _part = self.removeUnderscores(_part)
-
-                if (!self.regexTest("[a-z\u{00a1}-\u{ffff0}-9-]+", _part)){
-                    return false
-                }
-
-                if (_part[0] == "-" || _part.lastCharacter == "-" || self.regexTest("---", _part)) {
-                    return false
-                }
-            }
-
-            return true
+            return value.lowercaseString == "true"
         }
     }
+
+    public var isUUID: Validation {
+        return {
+            (value: String) in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            var uuid = NSUUID(UUIDString: value)
+            if let _uuid = uuid {
+                return true
+            }
+
+            return false
+
+        }
+    }
+
+    public var isUppercase: Validation {
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+
+            return value == value.uppercaseString
+        }
+    }
+
+    public func maxLength(length: Int) -> Validation {
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            return count(value) <= length ? true : false
+        }
+    }
+
+    public func minLength(length: Int) -> Validation {
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            return count(value) >= length ? true : false
+        }
+    }
+
+    public var required: Validation {
+        return {
+            (value: String) in
+            return value != ""
+        }
+    }
+
 
     // ------------------------ //
     // ------------------------ //
