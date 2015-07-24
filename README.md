@@ -1,6 +1,6 @@
 # Swift Validators :large_orange_diamond:
 
-A collection of string validation functions for iOS developed in Swift. Inspired by [validator.js](https://www.npmjs.com/package/validator)
+String validation for iOS developed in Swift. Inspired by [validator.js](https://www.npmjs.com/package/validator)
 
 ## Contents
 + [Installation](#installation)

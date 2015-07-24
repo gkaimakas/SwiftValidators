@@ -72,32 +72,48 @@ public class Validator {
 
 
     // Static validators the use the default configuration
-    public static func equals(seed: String) -> Validation {
-        return Validator.defaultValidator.equals(seed)
-    }
-
     public static func contains(seed: String) -> Validation {
         return Validator.defaultValidator.contains(seed)
     }
 
-    public static var isUppercase: Validation {
-        return Validator.defaultValidator.isUppercase
+    public static func equals(seed: String) -> Validation {
+        return Validator.defaultValidator.equals(seed)
     }
 
-    public static var isLowercase: Validation {
-        return Validator.defaultValidator.isLowercase
+    public static func exactLength(length: Int) -> Validation {
+        return Validator.defaultValidator.exactLength(length)
     }
 
-    public static func isIn(array: Array<String>) -> Validation {
-        return Validator.defaultValidator.isIn(array)
+    public static var isASCII: Validation {
+        return Validator.defaultValidator.isASCII
+    }
+
+    public static func isAfter(date: String) -> Validation {
+        return Validator.defaultValidator.isAfter(date)
+    }
+
+    public static var isAlpha: Validation {
+        return Validator.defaultValidator.isAlpha
+    }
+
+    public static var isAlphanumeric: Validation {
+        return Validator.defaultValidator.isAlphanumeric
+    }
+
+    public static var isBase64: Validation {
+        return Validator.defaultValidator.isBase64
     }
 
     public static func isBefore(date: String) -> Validation {
         return Validator.defaultValidator.isBefore(date)
     }
 
-    public static func isAfter(date: String) -> Validation {
-        return Validator.defaultValidator.isAfter(date)
+    public static var isBool: Validation {
+        return Validator.defaultValidator.isBool
+    }
+
+    public static var isCreditCard: Validation {
+        return Validator.defaultValidator.isCreditCard
     }
 
     public static var isDate: Validation {
@@ -112,55 +128,16 @@ public class Validator {
         return Validator.defaultValidator.isEmpty
     }
 
-    public static var isBool: Validation {
-        return Validator.defaultValidator.isBool
-    }
-
-    public static var isTrue: Validation {
-        return Validator.defaultValidator.isTrue
+    public static func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
+        return Validator.defaultValidator.isFQDN(options)
     }
 
     public static var isFalse: Validation {
         return Validator.defaultValidator.isFalse
     }
 
-    public static var isInt: Validation {
-        return Validator.defaultValidator.isInt
-    }
-
-    public static func minLength(length: Int) -> Validation {
-        return Validator.defaultValidator.minLength(length)
-    }
-
-    public static func maxLength(length: Int) -> Validation {
-        return Validator.defaultValidator.maxLength(length)
-    }
-
-    public static func exactLength(length: Int) -> Validation {
-        return {
-            (value: String) -> Bool in
-            return count(value) == length ? true : false
-        }
-    }
-
-    public static var required: Validation {
-        return Validator.defaultValidator.required
-    }
-
-    public static var isUUID: Validation {
-        return Validator.defaultValidator.isUUID
-    }
-
-    public static var isAlpha: Validation {
-        return Validator.defaultValidator.isAlpha
-    }
-
-    public static var isBase64: Validation {
-        return Validator.defaultValidator.isBase64
-    }
-
-    public static var isCreditCard: Validation {
-        return Validator.defaultValidator.isCreditCard
+    public static var isFloat: Validation {
+        return Validator.defaultValidator.isFloat
     }
 
     public static var isHexColor: Validation {
@@ -171,16 +148,8 @@ public class Validator {
         return Validator.defaultValidator.isHexadecimal
     }
 
-    public static var isASCII: Validation {
-        return Validator.defaultValidator.isASCII
-    }
-
-    public static var isNumeric: Validation {
-        return Validator.defaultValidator.isNumeric
-    }
-
-    public static func isPhone(locale: String) -> Validation {
-        return Validator.defaultValidator.isPhone(locale)
+    public static var isIP: Validation {
+        return Validator.defaultValidator.isIP
     }
 
     public static var isIPv4: Validation {
@@ -191,29 +160,66 @@ public class Validator {
         return Validator.defaultValidator.isIPv6
     }
 
-    public static var isIP: Validation {
-        return Validator.defaultValidator.isIP
-    }
-
     public static func isISBN(version: String) -> Validation {
         return Validator.defaultValidator.isISBN(version)
     }
 
-    public static var isFloat: Validation {
-        return Validator.defaultValidator.isFloat
+    public static func isIn(array: Array<String>) -> Validation {
+        return Validator.defaultValidator.isIn(array)
+    }
+
+    public static var isInt: Validation {
+        return Validator.defaultValidator.isInt
+    }
+
+    public static var isLowercase: Validation {
+        return Validator.defaultValidator.isLowercase
     }
 
     public static var isMongoId: Validation {
         return Validator.defaultValidator.isMongoId
     }
 
-    public static var isAlphanumeric: Validation {
-        return Validator.defaultValidator.isAlphanumeric
+    public static var isNumeric: Validation {
+        return Validator.defaultValidator.isNumeric
     }
 
-    public static func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
-        return Validator.defaultValidator.isFQDN(options)
+    public static func isPhone(locale: String) -> Validation {
+        return Validator.defaultValidator.isPhone(locale)
     }
+
+    public static var isTrue: Validation {
+        return Validator.defaultValidator.isTrue
+    }
+
+    public static var isUUID: Validation {
+        return Validator.defaultValidator.isUUID
+    }
+
+    public static var isUppercase: Validation {
+        return Validator.defaultValidator.isUppercase
+    }
+
+    public static func maxLength(length: Int) -> Validation {
+        return Validator.defaultValidator.maxLength(length)
+    }
+
+    public static func minLength(length: Int) -> Validation {
+        return Validator.defaultValidator.minLength(length)
+    }
+    
+    public static var required: Validation {
+        return Validator.defaultValidator.required
+    }
+
+
+
+
+
+
+
+
+
 
     // ------------------------ //
     // ------------------------ //
@@ -599,7 +605,7 @@ public class Validator {
             // (i.e. 2 of the blocks) in IPv4 notation, and RFC 3493 says
             // that '::ffff:a.b.c.d' is valid for IPv4-mapped IPv6 addresses,
             // and '::a.b.c.d' is deprecated, but also valid.
-            let validator: Validator = Validator(emptyMode: .Strict)
+            let validator: Validator = Validator(validationMode: .Strict)
             let foundIPv4TransitionBlock = (count(blocks) > 0 ? validator.isIPv4(blocks[count(blocks) - 1]) : false)
             let expectedNumberOfBlocks = (foundIPv4TransitionBlock ? 7 : 8)
 
@@ -742,25 +748,25 @@ public class Validator {
 
             if (options.requireTLD) {
                 var tld = parts.removeLast()
-                if( count(parts) == 0 || !self.regexTest("([a-z\u{00a1}-\u{ffff}]{2,}|xn[a-z0-9-]{2,})", tld) ){
+                if (count(parts) == 0 || !self.regexTest("([a-z\u{00a1}-\u{ffff}]{2,}|xn[a-z0-9-]{2,})", tld) ){
                     return false
                 }
             }
 
             for part in parts {
                 var _part = part
-                if(options.allowUnderscores){
-                    if(self.regexTest("__", _part)){
+                if (options.allowUnderscores) {
+                    if (self.regexTest("__", _part)) {
                         return false
                     }
                 }
                 _part = self.removeUnderscores(_part)
 
-                if(!self.regexTest("[a-z\u{00a1}-\u{ffff0}-9-]+", _part)){
+                if (!self.regexTest("[a-z\u{00a1}-\u{ffff0}-9-]+", _part)){
                     return false
                 }
 
-                if(_part[0] == "-" || _part.lastCharacter == "-" || self.regexTest("---", _part)){
+                if (_part[0] == "-" || _part.lastCharacter == "-" || self.regexTest("---", _part)) {
                     return false
                 }
             }
@@ -781,7 +787,7 @@ public class Validator {
         return self.removeCharacter(value, char: "-")
     }
 
-    private func removeUnderscores(value: String) -> String{
+    private func removeUnderscores(value: String) -> String {
         return self.removeCharacter(value, char: "_")
     }
 
