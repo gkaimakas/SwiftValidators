@@ -79,7 +79,24 @@ class ValidatorSpec : QuickSpec {
             describe("isEmail"){
                 it("should check if it is email"){
                     expect(Validator.isEmail("gkaimakas@gmail.com")).to(equal(true))
+                    expect(Validator.isEmail("foo@bar.com")).to(equal(true))
+                    expect(Validator.isEmail("x@x.au")).to(equal(true))
+                    expect(Validator.isEmail("foo@bar.com.au")).to(equal(true))
+                    expect(Validator.isEmail("foo+bar@bar.com")).to(equal(true))
+                    expect(Validator.isEmail("hans.m端ller@test.com")).to(equal(true))
+                    expect(Validator.isEmail("hans@m端ller.com")).to(equal(true))
+                    expect(Validator.isEmail("test|123@m端ller.com")).to(equal(true))
+                    expect(Validator.isEmail("test+ext@gmail.com")).to(equal(true))
+                    expect(Validator.isEmail("some.name.midd.leNa.me.+extension@GoogleMail.com")).to(equal(true))
+                    expect(Validator.isEmail("gmail...ignores...dots...@gmail.com")).to(equal(true))
+                    expect(Validator.isEmail("")).to(equal(true))
+
                     expect(Validator.isEmail("tester")).to(equal(false))
+                    expect(Validator.isEmail("invalidemail@")).to(equal(false))
+                    expect(Validator.isEmail("invalid.com")).to(equal(false))
+                    expect(Validator.isEmail("@invalid.com")).to(equal(false))
+                    expect(Validator.isEmail("foo@bar.com.")).to(equal(false))
+                    expect(Validator.isEmail("foo@bar.co.uk.")).to(equal(false))
                 }
             }
 
