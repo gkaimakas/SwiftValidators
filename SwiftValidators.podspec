@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SwiftValidators"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "String validation for iOS developed in Swift. Inspired by validator.js"
   s.homepage         = "https://github.com/gkaimakas/SwiftValidators"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
@@ -27,6 +27,6 @@ Pod::Spec.new do |s|
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'Foundation'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
