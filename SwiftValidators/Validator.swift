@@ -37,7 +37,7 @@ public class Validator {
     // create a new instance
     public static let defaultValidator: Validator = Validator()
 
-    public static let
+    internal static let
     ΕmailRegex: String = "[\\w._%+-|]+@[\\w0-9.-]+\\.[A-Za-z]{2,6}",
     ΑlphaRegex: String = "[a-zA-Z]+",
     Βase64Regex: String = "(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?",
