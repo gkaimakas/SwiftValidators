@@ -5,7 +5,7 @@
 
 import Foundation
 
-public extension String {
+internal extension String {
 
     public subscript (i: Int) -> String{
         return "\(self[advance(self.startIndex, i)])"
