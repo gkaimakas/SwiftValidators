@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version          = "1.0.0"
   s.summary          = "String validation for iOS developed in Swift. Inspired by validator.js"
   s.description      = <<-DESC
-                        "String validation for iOS developed in Swift. Inspired by validator.js"
+                        String validation for iOS developed in Swift. Inspired by validator.js
                        DESC
   s.homepage         = "https://github.com/gkaimakas/SwiftValidators"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

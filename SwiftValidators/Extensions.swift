@@ -7,7 +7,7 @@ import Foundation
 
 internal extension String {
 
-    public subscript (i: Int) -> String{
+    subscript (i: Int) -> String{
         return "\(self[advance(self.startIndex, i)])"
     }
     
@@ -15,11 +15,11 @@ internal extension String {
         return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
     }
 
-    public var length: Int {
+    var length: Int {
         return count(self)
     }
 
-    public var lastCharacter: String {
+    var lastCharacter: String {
         return self[self.length - 1]
     }
 }
