@@ -7,19 +7,19 @@ import Foundation
 
 internal extension String {
 
-    subscript (i: Int) -> String{
+    internal subscript (i: Int) -> String{
         return "\(self[advance(self.startIndex, i)])"
     }
     
-    subscript (r: Range<Int>) -> String {
+    internal subscript (r: Range<Int>) -> String {
         return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
     }
 
-    var length: Int {
+    internal var length: Int {
         return count(self)
     }
 
-    var lastCharacter: String {
+    internal var lastCharacter: String {
         return self[self.length - 1]
     }
 }
