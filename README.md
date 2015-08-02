@@ -12,7 +12,21 @@ String validation for iOS developed in Swift. Inspired by [validator.js](https:/
 
 ### Installation
 
-Copy [Validator.swift](https://github.com/gkaimakas/SwiftValidators/blob/master/SwiftValidators/Validator.swift) to your project file. Everything you will need is included.
+
+SwiftValidators is available on Cocoapods under the name 'SwiftValidators'. To use in your project add on your Podfile
+
+````
+pod 'SwiftValidators'
+````
+
+When you want to use SwiftValidators on a class simply import the framework
+
+````
+import SwiftValidators
+````
+or if you don't use cocoapods 
+
+copy [Validator.swift](https://github.com/gkaimakas/SwiftValidators/blob/master/SwiftValidators/Validator.swift) to your project file. Everything you will need is included.
 
 ### Walkthrough
 #### Usage
