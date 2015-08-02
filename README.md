@@ -16,7 +16,13 @@ String validation for iOS developed in Swift. Inspired by [validator.js](https:/
 SwiftValidators is available on Cocoapods under the name 'SwiftValidators'. To use in your project add on your Podfile
 
 ````
+use_frameworks!
+
+target 'MyProject' do
+...
 pod 'SwiftValidators'
+...
+end
 ````
 
 When you want to use SwiftValidators on a class simply import the framework
