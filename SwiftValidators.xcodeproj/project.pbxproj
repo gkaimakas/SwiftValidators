@@ -43,6 +43,7 @@
 		D590C794FFC3FF9BF8D6D1C9 /* Pods_SwiftValidatorsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidatorsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D73D62E7F646ACCD88ABA593 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		D73D6757670941DC51ADBD44 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D73D6B6685CBA1FC3B4D6E99 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +69,15 @@
 		131584BB1B5FFCB60077E959 = {
 			isa = PBXGroup;
 			children = (
-				13E80BC61B6BB596001DFEA4 /* Podspec Metadata */,
+				13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */,
+				D73D62E7F646ACCD88ABA593 /* README.md */,
+				13E80BC91B6BB694001DFEA4 /* LICENSE */,
 				131584C71B5FFCB60077E959 /* SwiftValidators */,
 				131584D41B5FFCB60077E959 /* SwiftValidatorsTests */,
 				131584C61B5FFCB60077E959 /* Products */,
 				8249FC70A763218BCB3EB1A2 /* Pods */,
 				49096A3BD1EDD96B5A32E5A9 /* Frameworks */,
-				D73D62E7F646ACCD88ABA593 /* README.md */,
+				D73D6B6685CBA1FC3B4D6E99 /* Podfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,15 +124,6 @@
 				131584D61B5FFCB60077E959 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		13E80BC61B6BB596001DFEA4 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				13E80BC91B6BB694001DFEA4 /* LICENSE */,
-				13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */,
-			);
-			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		49096A3BD1EDD96B5A32E5A9 /* Frameworks */ = {
