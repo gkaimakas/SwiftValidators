@@ -2,6 +2,8 @@
 
 String validation for iOS developed in Swift. Inspired by [validator.js](https://www.npmjs.com/package/validator)
 
+SwiftValidators was developed as the validation part of [Ion](https://github.com/gkaimakas/Ion) and Ion dictated the closure syntax for each validator. If you need awesome forms for your app, be sure to check [Ion](https://github.com/gkaimakas/Ion) (currently in beta).
+
 ## Contents
 + [Installation](#installation)
 + [Walkthrough](#walkthrough)
