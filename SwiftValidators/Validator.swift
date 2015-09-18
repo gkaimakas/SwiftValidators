@@ -76,8 +76,8 @@ public class Validator {
     /**
     Checks if the seed contains the value
     
-    :param: seed
-    :returns: (String)->Bool
+    - parameter seed:
+    - returns: (String)->Bool
     */
     public static func contains(seed: String) -> Validation {
         return Validator.defaultValidator.contains(seed)
@@ -87,8 +87,8 @@ public class Validator {
     /**
     Checks if the seed is equal to the value
     
-    :param: seed
-    :returns: (String)->Bool
+    - parameter seed:
+    - returns: (String)->Bool
     */
     public static func equals(seed: String) -> Validation {
         return Validator.defaultValidator.equals(seed)
@@ -97,8 +97,8 @@ public class Validator {
     /**
     Checks if it is the exact length
     
-    :param: length
-    :returns: (String)->Bool
+    - parameter length:
+    - returns: (String)->Bool
     */
     public static func exactLength(length: Int) -> Validation {
         return Validator.defaultValidator.exactLength(length)
@@ -108,7 +108,7 @@ public class Validator {
     /**
     checks if it is valid ascii string
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isASCII: Validation {
         return Validator.defaultValidator.isASCII
@@ -117,8 +117,8 @@ public class Validator {
     /**
     checks if it is after the date
     
-    :param:
-    :returns: (String)->Bool
+    - parameter
+    - returns:: (String)->Bool
     */
     public static func isAfter(date: String) -> Validation {
         return Validator.defaultValidator.isAfter(date)
@@ -127,7 +127,7 @@ public class Validator {
     /**
     checks if it has only letters
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isAlpha: Validation {
         return Validator.defaultValidator.isAlpha
@@ -136,7 +136,7 @@ public class Validator {
     /**
     checks if it has letters and numbers only
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isAlphanumeric: Validation {
         return Validator.defaultValidator.isAlphanumeric
@@ -145,7 +145,7 @@ public class Validator {
     /**
     checks if it a valid base64 string
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isBase64: Validation {
         return Validator.defaultValidator.isBase64
@@ -154,8 +154,8 @@ public class Validator {
     /**
     checks if it is before the date
 
-    :param: date A date as a string
-    :returns: (String)->Bool
+    - parameter date: A date as a string
+    - returns: (String)->Bool
     */
     public static func isBefore(date: String) -> Validation {
         return Validator.defaultValidator.isBefore(date)
@@ -164,7 +164,7 @@ public class Validator {
     /**
     checks if it is boolean
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isBool: Validation {
         return Validator.defaultValidator.isBool
@@ -173,7 +173,7 @@ public class Validator {
     /**
     checks if it is a credit card number
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isCreditCard: Validation {
         return Validator.defaultValidator.isCreditCard
@@ -182,7 +182,7 @@ public class Validator {
     /**
     checks if it is a valid date
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isDate: Validation {
         return Validator.defaultValidator.isDate
@@ -191,7 +191,7 @@ public class Validator {
     /**
     checks if it is an email
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isEmail: Validation {
         return Validator.defaultValidator.isEmail
@@ -200,7 +200,7 @@ public class Validator {
     /**
     checks if it is an empty string
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isEmpty: Validation {
         return Validator.defaultValidator.isEmpty
@@ -209,17 +209,17 @@ public class Validator {
     /**
     checks if it is fully qualified domain name
 
-    :param: options An instance of FDQNOptions
-    :returns: (String)->Bool
+    - parameter options: An instance of FDQNOptions
+    - returns: (String)->Bool
     */
-    public static func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
+    public static func isFQDN(options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
         return Validator.defaultValidator.isFQDN(options)
     }
 
     /**
     checks if it is false
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isFalse: Validation {
         return Validator.defaultValidator.isFalse
@@ -228,7 +228,7 @@ public class Validator {
     /**
     checks if it is a float number
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isFloat: Validation {
         return Validator.defaultValidator.isFloat
@@ -237,7 +237,7 @@ public class Validator {
     /**
     checks if it is a valid hex color
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isHexColor: Validation {
         return Validator.defaultValidator.isHexColor
@@ -246,7 +246,7 @@ public class Validator {
     /**
     checks if it is a hexadecimal value
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isHexadecimal: Validation {
         return Validator.defaultValidator.isHexadecimal
@@ -255,7 +255,7 @@ public class Validator {
     /**
     checks if it is a valid IP (4|6)
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isIP: Validation {
         return Validator.defaultValidator.isIP
@@ -264,7 +264,7 @@ public class Validator {
     /**
     checks if it is a valid IPv4
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isIPv4: Validation {
         return Validator.defaultValidator.isIPv4
@@ -273,7 +273,7 @@ public class Validator {
     /**
     checks if it is a valid IPv6
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isIPv6: Validation {
         return Validator.defaultValidator.isIPv6
@@ -282,8 +282,8 @@ public class Validator {
     /**
     checks if it is a valid ISBN
 
-    :param: version ISBN version "10" or "13"
-    :returns: (String)->Bool
+    - parameter version: ISBN version "10" or "13"
+    - returns: (String)->Bool
     */
     public static func isISBN(version: String) -> Validation {
         return Validator.defaultValidator.isISBN(version)
@@ -292,8 +292,8 @@ public class Validator {
     /**
     checks if the value exists in the supplied array
 
-    :param: array An array of strings
-    :returns: (String)->Bool
+    - parameter array: An array of strings
+    - returns: (String)->Bool
     */
     public static func isIn(array: Array<String>) -> Validation {
         return Validator.defaultValidator.isIn(array)
@@ -302,7 +302,7 @@ public class Validator {
     /**
     checks if it is a valid integer
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isInt: Validation {
         return Validator.defaultValidator.isInt
@@ -311,7 +311,7 @@ public class Validator {
     /**
     checks if it only has lowercase characters
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isLowercase: Validation {
         return Validator.defaultValidator.isLowercase
@@ -320,7 +320,7 @@ public class Validator {
     /**
     checks if it is a hexadecimal mongo id
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isMongoId: Validation {
         return Validator.defaultValidator.isMongoId
@@ -329,7 +329,7 @@ public class Validator {
     /**
     checks if it is numeric
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isNumeric: Validation {
         return Validator.defaultValidator.isNumeric
@@ -338,7 +338,7 @@ public class Validator {
     /**
     checks if is is a valid phone
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static func isPhone(locale: String) -> Validation {
         return Validator.defaultValidator.isPhone(locale)
@@ -347,7 +347,7 @@ public class Validator {
     /**
     checks if it is true
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isTrue: Validation {
         return Validator.defaultValidator.isTrue
@@ -356,7 +356,7 @@ public class Validator {
     /**
     checks if it is a valid UUID
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isUUID: Validation {
         return Validator.defaultValidator.isUUID
@@ -365,7 +365,7 @@ public class Validator {
     /**
     checks if has only uppercase letter
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var isUppercase: Validation {
         return Validator.defaultValidator.isUppercase
@@ -374,8 +374,8 @@ public class Validator {
     /**
     checks if the length does not exceed the max length
 
-    :param: length The max length
-    :returns: (String)->Bool
+    - parameter length: The max length
+    - returns: (String)->Bool
     */
     public static func maxLength(length: Int) -> Validation {
         return Validator.defaultValidator.maxLength(length)
@@ -384,8 +384,8 @@ public class Validator {
     /**
     checks if the length isn't lower than
 
-    :param: minLength The min length
-    :returns: (String)->Bool
+    - parameter minLength: The min length
+    - returns: (String)->Bool
     */
     public static func minLength(length: Int) -> Validation {
         return Validator.defaultValidator.minLength(length)
@@ -394,7 +394,7 @@ public class Validator {
     /**
     checks if it is not an empty string
      
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public static var required: Validation {
         return Validator.defaultValidator.required
@@ -427,8 +427,8 @@ public class Validator {
     /**
     Checks if the seed contains the value
 
-    :param: seed
-    :returns: (String)->Bool
+    - parameter seed:
+    - returns: (String)->Bool
     */
     public func contains(string: String) -> Validation {
         return {
@@ -443,8 +443,8 @@ public class Validator {
     /**
     Checks if the seed is equal to the value
 
-    :param: seed
-    :returns: (String)->Bool
+    - parameter seed:
+    - returns: (String)->Bool
     */
     public func equals(string: String) -> Validation {
         return {
@@ -459,8 +459,8 @@ public class Validator {
     /**
     checks if it has the exact length
 
-    :param: length
-    :returns: (String)->Bool
+    - parameter length:
+    - returns: (String)->Bool
     */
     public func exactLength(length: Int) -> Validation {
         return {
@@ -468,14 +468,14 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return count(value) == length ? true : false
+            return value.characters.count == length ? true : false
         }
     }
     
     /**
     checks if it is a valid ascii string
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isASCII: Validation {
         return {
@@ -490,8 +490,8 @@ public class Validator {
     /**
     checks if it is after the date
 
-    :param: date
-    :returns: (String)->Bool
+    - parameter date:
+    - returns: (String)->Bool
     */
     public func isAfter(date: String) -> Validation {
         let startDate: NSDate? = self.dateFormatter.dateFromString(date)
@@ -500,9 +500,9 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            var date: NSDate? = self.dateFormatter.dateFromString(value)
+            let date: NSDate? = self.dateFormatter.dateFromString(value)
             if let _date = date {
-                var comparison = _date.compare(startDate!)
+                let comparison = _date.compare(startDate!)
                 switch (comparison) {
                 case NSComparisonResult.OrderedAscending:
                     return false
@@ -521,7 +521,7 @@ public class Validator {
     /**
     checks if it has only letters
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isAlpha: Validation {
         return {
@@ -530,7 +530,7 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var test = NSPredicate(format: "SELF MATCHES %@", Validator.ΑlphaRegex)
+            let test = NSPredicate(format: "SELF MATCHES %@", Validator.ΑlphaRegex)
             return test.evaluateWithObject(value)
         }
     }
@@ -538,7 +538,7 @@ public class Validator {
     /**
     checks if it has letters and numbers only
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isAlphanumeric: Validation {
         return {
@@ -553,7 +553,7 @@ public class Validator {
     /**
     checks if it a valid base64 string
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isBase64: Validation {
         return {
@@ -562,7 +562,7 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var test = NSPredicate(format: "SELF MATCHES %@", Validator.Βase64Regex)
+            let test = NSPredicate(format: "SELF MATCHES %@", Validator.Βase64Regex)
             return test.evaluateWithObject(value)
         }
     }
@@ -570,8 +570,8 @@ public class Validator {
     /**
     checks if it is before the date
 
-    :param: date A date as a string
-    :returns: (String)->Bool
+    - parameter date: A date as a string
+    - returns: (String)->Bool
     */
     public func isBefore(date: String) -> Validation {
         let startDate: NSDate? = self.dateFormatter.dateFromString(date)
@@ -580,9 +580,9 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            var date: NSDate? = self.dateFormatter.dateFromString(value)
+            let date: NSDate? = self.dateFormatter.dateFromString(value)
             if let _date = date {
-                var comparison = _date.compare(startDate!)
+                let comparison = _date.compare(startDate!)
                 switch (comparison) {
                 case NSComparisonResult.OrderedAscending:
                     return true
@@ -601,7 +601,7 @@ public class Validator {
     /**
     checks if it is boolean
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isBool: Validation {
         return {
@@ -617,7 +617,7 @@ public class Validator {
     /**
     checks if it is a credit card number
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isCreditCard: Validation {
         return {
@@ -626,7 +626,7 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var test = NSPredicate(format: "SELF MATCHES %@", Validator.CreditCardRegex)
+            let test = NSPredicate(format: "SELF MATCHES %@", Validator.CreditCardRegex)
             var clearValue = self.removeDashes(value)
             clearValue = self.removeSpaces(clearValue)
             return test.evaluateWithObject(clearValue)
@@ -637,7 +637,7 @@ public class Validator {
     /**
     checks if it is a valid date
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isDate: Validation {
         return {
@@ -646,8 +646,8 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var date: NSDate? = self.dateFormatter.dateFromString(value)
-            if let _date = date {
+            let date: NSDate? = self.dateFormatter.dateFromString(value)
+            if let _ = date {
                 return true
             } else {
                 return false
@@ -660,7 +660,7 @@ public class Validator {
     /**
     checks if it is an email
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isEmail: Validation {
         return {
@@ -670,7 +670,7 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var emailTest = NSPredicate(format: "SELF MATCHES %@", Validator.ΕmailRegex)
+            let emailTest = NSPredicate(format: "SELF MATCHES %@", Validator.ΕmailRegex)
             return emailTest.evaluateWithObject(value)
         }
     }
@@ -679,7 +679,7 @@ public class Validator {
     /**
     checks if it is an empty string
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isEmpty: Validation {
         return {
@@ -691,10 +691,10 @@ public class Validator {
     /**
     checks if it is fully qualified domain name
 
-    :param: options An instance of FDQNOptions
-    :returns: (String)->Bool
+    - parameter options: An instance of FDQNOptions
+    - returns: (String)->Bool
     */
-    public func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
+    public func isFQDN(options: FQDNOptions = FQDNOptions.defaultOptions) -> Validation {
         return {
             (value: String) in
             if value == "" {
@@ -706,13 +706,13 @@ public class Validator {
                 string = string[0 ..< string.length]
             }
 
-            var parts = split(string, allowEmptySlices: true) {
+            var parts = string.characters.split(allowEmptySlices: true) {
                 $0 == "."
-            }
+            }.map { String($0) }
 
             if (options.requireTLD) {
-                var tld = parts.removeLast()
-                if (count(parts) == 0 || !self.regexTest("([a-z\u{00a1}-\u{ffff}]{2,}|xn[a-z0-9-]{2,})", tld) ){
+                let tld = parts.removeLast()
+                if (parts.count == 0 || !self.regexTest("([a-z\u{00a1}-\u{ffff}]{2,}|xn[a-z0-9-]{2,})", tld) ){
                     return false
                 }
             }
@@ -743,7 +743,7 @@ public class Validator {
     /**
     checks if it is false
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isFalse: Validation {
         return {
@@ -760,7 +760,7 @@ public class Validator {
     /**
     checks if it is a float number
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isFloat: Validation {
         return {
@@ -776,7 +776,7 @@ public class Validator {
     /**
     checks if it is a valid hex color
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isHexColor: Validation {
         return {
@@ -785,9 +785,9 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var test = NSPredicate(format: "SELF MATCHES %@", Validator.HexColorRegex)
-            var newValue = value.uppercaseString
-            var result = test.evaluateWithObject(newValue)
+            let test = NSPredicate(format: "SELF MATCHES %@", Validator.HexColorRegex)
+            let newValue = value.uppercaseString
+            let result = test.evaluateWithObject(newValue)
             return result
         }
     }
@@ -796,7 +796,7 @@ public class Validator {
     /**
     checks if it is a hexadecimal value
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isHexadecimal: Validation {
         return {
@@ -804,7 +804,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            var newValue = value.uppercaseString
+            let newValue = value.uppercaseString
             return self.regexTest(Validator.HexadecimalRegex, newValue)
         }
     }
@@ -813,7 +813,7 @@ public class Validator {
     /**
     checks if it is a valid IP (v4 or v6)
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isIP: Validation {
         return {
@@ -826,7 +826,7 @@ public class Validator {
     /**
     checks if it is a valid IPv4
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */    public var isIPv4: Validation {
         return {
             (value: String) in
@@ -841,20 +841,20 @@ public class Validator {
     /**
     checks if it is a valid IPv6
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isIPv6: Validation {
         return {
             (value: String) in
-            var string: String = self.removeDashes(self.removeSpaces(value))
+            let string: String = self.removeDashes(self.removeSpaces(value))
 
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var blocks = split(string, allowEmptySlices: true) {
+            var blocks = string.characters.split(allowEmptySlices: true) {
                 $0 == ":"
-            }
+            }.map { String($0) }
 
             var foundOmissionBlock = false // marker to indicate ::
 
@@ -863,32 +863,32 @@ public class Validator {
             // that '::ffff:a.b.c.d' is valid for IPv4-mapped IPv6 addresses,
             // and '::a.b.c.d' is deprecated, but also valid.
             let validator: Validator = Validator(validationMode: .Strict)
-            let foundIPv4TransitionBlock = (count(blocks) > 0 ? validator.isIPv4(blocks[count(blocks) - 1]) : false)
+            let foundIPv4TransitionBlock = (blocks.count > 0 ? validator.isIPv4(blocks[blocks.count - 1]) : false)
             let expectedNumberOfBlocks = (foundIPv4TransitionBlock ? 7 : 8)
 
-            if (count(blocks) > expectedNumberOfBlocks) {
+            if (blocks.count > expectedNumberOfBlocks) {
                 return false
             }
 
             if (string == "::") {
                 return true
-            } else if (string.substringToIndex(advance(string.startIndex, 2)) == "::") {
+            } else if (string.substringToIndex(string.startIndex.advancedBy(2)) == "::") {
                 blocks.removeAtIndex(0)
                 blocks.removeAtIndex(0)
                 foundOmissionBlock = true
-            } else if (String(reverse(string)).substringToIndex(advance(string.startIndex, 2)) == "::") {
+            } else if (String(Array(string.characters.reverse())).substringToIndex(string.startIndex.advancedBy(2)) == "::") {
                 blocks.removeLast()
                 blocks.removeLast()
                 foundOmissionBlock = true
             }
 
-            for i in 0 ..< count(blocks) {
-                if (blocks[i] == "" && i > 0 && i < count(blocks) - 1) {
+            for i in 0 ..< blocks.count {
+                if (blocks[i] == "" && i > 0 && i < blocks.count - 1) {
                     if (foundOmissionBlock) {
                         return false
                     }
                     foundOmissionBlock = true
-                } else if (foundIPv4TransitionBlock && i == count(blocks) - 1) {
+                } else if (foundIPv4TransitionBlock && i == blocks.count - 1) {
 
                 } else if (!self.regexTest(Validator.IPRegex["6"]!, blocks[i])) {
                     return false
@@ -896,9 +896,9 @@ public class Validator {
             }
 
             if (foundOmissionBlock) {
-                return count(blocks) >= 1
+                return blocks.count >= 1
             } else {
-                return count(blocks) == expectedNumberOfBlocks
+                return blocks.count == expectedNumberOfBlocks
             }
         }
     }
@@ -906,8 +906,8 @@ public class Validator {
     /**
     checks if it is a valid ISBN
 
-    :param: version ISBN version "10" or "13"
-    :returns: (String)->Bool
+    - parameter version: ISBN version "10" or "13"
+    - returns: (String)->Bool
     */
     public func isISBN(version: String) -> Validation {
         return {
@@ -926,13 +926,13 @@ public class Validator {
             if (version == "10") {
 
                 for i in 0 ..< 9 {
-                    checksum += (i + 1) * "\(sanitized[advance(sanitized.startIndex, i)])".toInt()!
+                    checksum += (i + 1) * Int("\(sanitized[sanitized.startIndex.advancedBy(i)])")!
                 }
 
-                if ("\(sanitized[advance(sanitized.startIndex, 9)])".lowercaseString == "x") {
+                if ("\(sanitized[sanitized.startIndex.advancedBy(9)])".lowercaseString == "x") {
                     checksum += 10 * 10
                 } else {
-                    checksum += 10 * "\(sanitized[advance(sanitized.startIndex, 9)])".toInt()!
+                    checksum += 10 * Int("\(sanitized[sanitized.startIndex.advancedBy(9)])")!
                 }
 
                 if (checksum % 11 == 0) {
@@ -942,11 +942,11 @@ public class Validator {
             } else if (version == "13") {
                 var factor = [1, 3]
                 for i in 0 ..< 12 {
-                    let charAt: Int = "\(sanitized[advance(sanitized.startIndex, i)])".toInt()!
+                    let charAt: Int = Int("\(sanitized[sanitized.startIndex.advancedBy(i)])")!
                     checksum += factor[i % 2] * charAt
                 }
 
-                let charAt12 = "\(sanitized[advance(sanitized.startIndex, 12)])".toInt()!
+                let charAt12 = Int("\(sanitized[sanitized.startIndex.advancedBy(12)])")!
                 if ((charAt12 - ((10 - (checksum % 10)) % 10)) == 0) {
                     return true
                 }
@@ -959,8 +959,8 @@ public class Validator {
     /**
     checks if the value exists in the supplied array
 
-    :param: array An array of strings
-    :returns: (String)->Bool
+    - parameter array: An array of strings
+    - returns: (String)->Bool
     */
     public func isIn(array: Array<String>) -> Validation {
         return {
@@ -969,7 +969,7 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            if let index = find(array, value) {
+            if let _ = array.indexOf(value) {
                 return true
             } else {
                 return false
@@ -981,7 +981,7 @@ public class Validator {
     /**
     checks if it is a valid integer
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isInt: Validation {
         return {
@@ -997,7 +997,7 @@ public class Validator {
     /**
     checks if it only has lowercase characters
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isLowercase: Validation {
         return {
@@ -1014,7 +1014,7 @@ public class Validator {
     /**
     checks if it is a hexadecimal mongo id
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isMongoId: Validation {
         return {
@@ -1022,7 +1022,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return self.isHexadecimal(value) && count(value) == 24
+            return self.isHexadecimal(value) && value.characters.count == 24
         }
     }
 
@@ -1030,7 +1030,7 @@ public class Validator {
     /**
     checks if it is numeric
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isNumeric: Validation {
         return {
@@ -1045,8 +1045,8 @@ public class Validator {
     /**
     checks if is is a valid phone
 
-    :param: locale The locale as a String. Available locales are 'zh-CN', 'en-ZA', 'en-AU', 'en-HK', 'pt-PT', 'fr-FR', 'el-GR', 'en-GB', 'en-US', 'en-ZM', 'ru-RU
-    :returns: (String)->Bool
+    - parameter locale: The locale as a String. Available locales are 'zh-CN', 'en-ZA', 'en-AU', 'en-HK', 'pt-PT', 'fr-FR', 'el-GR', 'en-GB', 'en-US', 'en-ZM', 'ru-RU
+    - returns: (String)->Bool
     */
     public func isPhone(locale: String) -> Validation {
         return {
@@ -1062,7 +1062,7 @@ public class Validator {
     /**
     checks if it is true
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isTrue: Validation {
         return {
@@ -1079,7 +1079,7 @@ public class Validator {
     /**
     checks if it is a valid UUID
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isUUID: Validation {
         return {
@@ -1088,8 +1088,8 @@ public class Validator {
                 return (self.validationMode == .Default ? true : false)
             }
 
-            var uuid = NSUUID(UUIDString: value)
-            if let _uuid = uuid {
+            let uuid = NSUUID(UUIDString: value)
+            if let _ = uuid {
                 return true
             }
 
@@ -1102,7 +1102,7 @@ public class Validator {
     /**
     checks if it has only uppercase letters
     
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var isUppercase: Validation {
         return {
@@ -1118,8 +1118,8 @@ public class Validator {
     /**
     checks if the length does not exceed the max length
 
-    :param: length The max length
-    :returns: (String)->Bool
+    - parameter length: The max length
+    - returns: (String)->Bool
     */
     public func maxLength(length: Int) -> Validation {
         return {
@@ -1127,15 +1127,15 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return count(value) <= length ? true : false
+            return value.characters.count <= length ? true : false
         }
     }
     
     /**
     checks if the length isn't lower than
 
-    :param: length The min length
-    :returns: (String)->Bool
+    - parameter length: The min length
+    - returns: (String)->Bool
     */
     public func minLength(length: Int) -> Validation {
         return {
@@ -1143,7 +1143,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return count(value) >= length ? true : false
+            return value.characters.count >= length ? true : false
         }
     }
 
@@ -1151,7 +1151,7 @@ public class Validator {
     /**
     checks if it is not an empty string
 
-    :returns: (String)->Bool
+    - returns: (String)->Bool
     */
     public var required: Validation {
         return {

@@ -8,15 +8,15 @@ import Foundation
 internal extension String {
 
     internal subscript (i: Int) -> String{
-        return "\(self[advance(self.startIndex, i)])"
+        return "\(self[self.startIndex.advancedBy(i)])"
     }
     
     internal subscript (r: Range<Int>) -> String {
-        return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
+        return substringWithRange(Range(start: startIndex.advancedBy(r.startIndex), end: startIndex.advancedBy(r.endIndex)))
     }
 
     internal var length: Int {
-        return count(self)
+        return self.characters.count
     }
 
     internal var lastCharacter: String {
