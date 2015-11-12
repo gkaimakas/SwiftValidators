@@ -5,7 +5,7 @@ target 'SwiftValidators' do
 end
 
 target 'SwiftValidatorsTests' do
-    pod 'Quick', '~> 0.6.0'
-    pod 'Nimble', '~> 2.0.0-rc.2'
+    pod 'Quick', '~> 0.8.0'
+    pod 'Nimble', '~> 3.0.0'
 end
 
