@@ -10,6 +10,10 @@ import Foundation
 
 public typealias Validation = (String) -> Bool
 
+public protocol ValidatorProtocol {
+    func getValue() -> String
+}
+
 public class Validator {
 
     public enum ValidationMode {
@@ -389,6 +393,16 @@ public class Validator {
     */
     public static func minLength(length: Int) -> Validation {
         return Validator.defaultValidator.minLength(length)
+    }
+    
+    /**
+     watch the validator protocol implementor for changes
+     
+     -parameter delegate: The validator protocol implementor
+     - returns: (String)->Bool
+    */
+    public static func watch(delegate: ValidatorProtocol) -> Validation {
+        return Validator.defaultValidator.watch(delegate)
     }
 
     /**
@@ -1159,6 +1173,23 @@ public class Validator {
             return value != ""
         }
     }
+    
+    /**
+     watch the validator protocol implementor for changes
+     
+     -parameter delegate: The validator protocol implementor
+     - returns: (String)->Bool
+     */
+    public func watch(delegate: ValidatorProtocol) -> Validation {
+        return {
+            (value: String) -> Bool in
+            if value == "" {
+                return (self.validationMode == .Default ? true : false)
+            }
+            return value == delegate.getValue()
+        }
+    }
+
 
 
     // ------------------------ //
