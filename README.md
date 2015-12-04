@@ -121,6 +121,7 @@ isUppercase|checks if has only uppercase letter|var|-|Validator.isUppercase("ABC
 maxLength|checks if the length does not exceed the max length|func|Int|Validator.maxLength(2)("ab")
 minLength|checks if the length isn't lower than|func|Int|Validator.minLength(1)("213")
 required|checks if it is not an empty string|var|-|Validator.required("")
+watch| check the delegate for equality | func | ValidatorProtocol | Validator.watch(delegate) 
 
 *FQDNOptions is a class that is used on isFQDN for configuration purposes. It can be instantiated like this: 
     
