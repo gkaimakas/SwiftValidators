@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SwiftValidators"
-  s.version          = "2.0.3"
+  s.version          = "2.0.4"
   s.summary          = "String validation for iOS developed in Swift. Inspired by validator.js"
   s.homepage         = "https://github.com/gkaimakas/SwiftValidators"
   s.license          = 'MIT'

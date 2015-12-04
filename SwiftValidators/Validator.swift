@@ -11,7 +11,7 @@ import Foundation
 public typealias Validation = (String) -> Bool
 
 public protocol ValidatorProtocol {
-    func value() -> String
+    func getValue() -> String
 }
 
 public class Validator {
@@ -1186,7 +1186,7 @@ public class Validator {
             if value == "" {
                 return (self.validationMode == .Default ? true : false)
             }
-            return value == delegate.value()
+            return value == delegate.getValue()
         }
     }
 
