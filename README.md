@@ -127,6 +127,15 @@ watch| check the delegate for equality | func | ValidatorProtocol | Validator.wa
     
     FQDNOptions(requireTLD: Bool, allowUnderscores: Bool, allowTrailingDot: Bool)
     
+ ### Validator Protocol
+ 
+ Validator protocol is a simple protocol that is used to get the string value of an object. For that purpose it exposes only
+ a single function
+ 
+      func getValue() -> String
+      
+The watch validator accepts an object that conforms to that protocol only.
+    
 ### License MIT
 
 ````
