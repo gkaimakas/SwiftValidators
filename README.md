@@ -87,7 +87,7 @@ When custom behaviour is needed you can create a validator instance and configur
 Name|Description|Type|Arguments|Example
 ----|-----------|----|---------|-------
 contains | checks if it is contained in the seed | func | String | Validator.contains("some seed")("ee")
-equals | checks if it an email | var |  | Validator.isEmail("gkaimakas@gmail.com") 
+equals | checks if it equals another | func | String | Validator.equals("aa")("aa") 
 exactLength | checks if it has the exact length | func |  Int | Validator.exactLength(2)("aa")
 isASCII | checks if it is valid ascii string | var | - | Validator.isASCII("SDGSFG")
 isAfter | checks if it is after the date | func | String | Validator.isAfter("23/07/2015")("24/07/2015")
