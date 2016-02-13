@@ -15,7 +15,7 @@ SwiftValidators was developed as the validation part of [Ion](https://github.com
 ### Installation
 
 
-SwiftValidators is available on Cocoapods under the name 'SwiftValidators'. To use in your project add on your Podfile
+SwiftValidators is available on CocoaPods under the name 'SwiftValidators'. To use in your project add on your Podfile
 
 ````
 use_frameworks!
