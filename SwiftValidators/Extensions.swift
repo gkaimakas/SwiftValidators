@@ -12,7 +12,7 @@ internal extension String {
     }
     
     internal subscript (r: Range<Int>) -> String {
-        return substringWithRange(Range(startIndex.advancedBy(r.startIndex) ..< startIndex.advancedBy(r.endIndex)))
+        return substringWithRange(startIndex.advancedBy(r.startIndex) ..< startIndex.advancedBy(r.endIndex))
     }
 
     internal var length: Int {
