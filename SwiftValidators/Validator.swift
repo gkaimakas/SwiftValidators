@@ -735,7 +735,7 @@ public class Validator {
 
             var string = value
             if (options.allowTrailingDot && string.lastCharacter == ".") {
-                string = string[0 ..< string.length]
+				string = string.substringWithRange(string.startIndex.advancedBy(0) ..< string.startIndex.advancedBy(string.length))
             }
 
             var parts = string.characters.split(allowEmptySlices: true) {

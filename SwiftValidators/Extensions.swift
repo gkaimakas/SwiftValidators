@@ -10,10 +10,6 @@ internal extension String {
     internal subscript (i: Int) -> String{
         return "\(self[self.startIndex.advancedBy(i)])"
     }
-    
-    internal subscript (r: Range<Int>) -> String {
-        return substringWithRange(startIndex.advancedBy(r.startIndex) ..< startIndex.advancedBy(r.endIndex))
-    }
 
     internal var length: Int {
         return self.characters.count
