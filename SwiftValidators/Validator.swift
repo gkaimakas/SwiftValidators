@@ -14,6 +14,24 @@ public protocol ValidatorProtocol {
     func getValue() -> String
 }
 
+public func || (lhs: Validation, rhs: Validation) -> Validation {
+	return { (value: String) -> Bool in
+		return lhs(value) || rhs(value)
+	}
+}
+
+public func && (lhs: Validation, rhs: Validation) -> Validation {
+	return { (value: String) -> Bool in
+		return lhs(value) && rhs(value)
+	}
+}
+
+public prefix func ! (rhs: Validation) -> Validation {
+	return { (value: String) -> Bool in
+		return !rhs(value)
+	}
+}
+
 public class Validator {
 
     public enum ValidationMode {

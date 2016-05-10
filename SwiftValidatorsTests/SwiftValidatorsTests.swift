@@ -13,6 +13,38 @@ import Foundation
 
 class ValidatorSpec : QuickSpec {
     override func spec() {
+		
+		describe("Operators") {
+			context("Logical AND") {
+				it("should return true only if both operands are true") {
+					let logicalAnd = Validator.required && Validator.equals("true")
+					
+					expect(logicalAnd("true")) == true
+					expect(logicalAnd("false")) == false
+					expect(logicalAnd("")) == false
+				}
+			}
+			
+			context("Logical OR") {
+				it("should return true if one operand is true") {
+					let logicalOR = Validator.isTrue || Validator.isFalse
+					
+					expect(logicalOR("true")) == true
+					expect(logicalOR("false")) == true
+					expect(logicalOR("somthing")) == false
+				}
+			}
+			
+			context("Logical NOT") {
+				it("should reverse the operand's result") {
+					let logicalNOT = !Validator.isTrue
+					
+					expect(logicalNOT("true")) == false
+					expect(logicalNOT("false")) == true
+				}
+			}
+		}
+		
         describe("Validator"){
             describe("equals"){
                 it("should validate equal values"){
