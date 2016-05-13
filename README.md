@@ -1,5 +1,7 @@
 # Swift Validators :large_orange_diamond:
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 String validation for iOS developed in Swift. Inspired by [validator.js](https://www.npmjs.com/package/validator)
 
 ## Contents
