@@ -106,7 +106,7 @@ exactLength | checks if it has the exact length | func |  Int | Validator.exactL
 isASCII | checks if it is valid ascii string | var | - | Validator.isASCII("SDGSFG")
 isAfter | checks if it is after the date | func | String | Validator.isAfter("23/07/2015")("24/07/2015")
 isAlpha|checks if it has only letters|var|-|Validator.isAlpha("abc")
-isAlphanumeric|checks if it has letters and numbers only|var|-|Validator.isAlphanumaric("abc123")
+isAlphanumeric|checks if it has letters and numbers only|var|-|Validator.isAlphanumeric("abc123")
 isBase64 | checks if it a valid base64 string | var | - | Validator.isBase64("some string")
 isBefore|checks if it is before the date | func|String|Validator.isBefore("25/09/1987")("29/03/1994")
 isBool|checks if it is boolean|var|-|Validator.isBool("true")
