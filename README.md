@@ -1,5 +1,7 @@
 # Swift Validators :large_orange_diamond:
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 String validation for iOS developed in Swift. Inspired by [validator.js](https://www.npmjs.com/package/validator)
 
 ## Contents
@@ -38,35 +40,36 @@ copy [Validator.swift](https://github.com/gkaimakas/SwiftValidators/blob/master/
 #### Usage
 There are two types of validators available, validator functions and validator getter variables. Both types though return a closure with signature
 
+````
 (String) -> Bool
-
+````
 which is type aliased as Validation.
-
+````
 typealias Validation = (String) -> Bool
-
+````
 Getter variables where used whenever only the default functionality was needed, e.g: isBool. Functions are used every time the behavior of the validator can be configured. This approach makes for a very intresting syntax when using the validators.
 
 Lets say that we want to validate a string and check if it a Boolean and if it a valid ISBN value (I know, I know, it can't be both, but lets say it can for the sake of the example). We will use the isBoolean and isISBN validators. isBoolean is a getter variable (meaning it can't be configured) and isISBN is a function that takes an argument (meaning it can be configured). So our code will be:
-
+````
 Validator.isBoolean("true") // the result is true
 Validator.isISBN("10")("3836221195") // again the result will be false
-
+````
 For more examples on how to call each validator you can look at the [unit tests](https://github.com/gkaimakas/SwiftValidators/blob/master/SwiftValidatorsTests/SwiftValidatorsTests.swift). Each validator is tested so I'm sure you will find what you need.
 
 #### Logical Operators
 
 You can combine operators using the logical `AND`, logical `OR` and Logical `NOT` operators ( &&,  || and ! respectively). 
-
+````
 let combinedANDValidator = Validator.required && Validator.isTrue
-
+````
 The `combinedANDValidator` will be `true` only when the value is not empty and `"true"`
-
+````
 let combinedORValidator = Validator.isTrue || Validator.isFalse
-
+````
 The `combinedORValidator` will be `true` if the value is `"true"` or `"false"`, otherwise it will be false.
-
+````
 let reversedValidator = !Validator.isTrue
-
+````
 The `reversedValidator` will be `false` when the value equals `"true"` and `true` for all other values.
 
 #### Configuration
@@ -85,15 +88,19 @@ dateFormat | String | When using date validators (isDate, isBefore, isAfter) the
 
 When custom behaviour is needed you can create a validator instance and configure its behaviour with one of the three constructors available:
 
-//default behaviour
+// default behaviour
+````
 Validator() 
-
+````
 // configure how empty strings should be treated
+````
 Validator(validationMode: Validator.ValidationMode) 
+````
 
-//configure empty strings and date format
+// configure empty strings and date format
+````
 Validator(validationMode: Validator.ValidationMode, dateFormat: String) 
-
+````
 
 
 ### Supported validators
@@ -138,17 +145,17 @@ required|checks if it is not an empty string|var|-|Validator.required("")
 watch| check the delegate for equality | func | ValidatorProtocol | Validator.watch(delegate) 
 
 *FQDNOptions is a class that is used on isFQDN for configuration purposes. It can be instantiated like this: 
-
+````
 FQDNOptions(requireTLD: Bool, allowUnderscores: Bool, allowTrailingDot: Bool)
-
+````
 
 ### Validator Protocol
 
 Validator protocol is a simple protocol that is used to get the string value of an object. For that purpose it exposes only
 a single function
-
+````
 func getValue() -> String
-
+````
 The watch validator accepts an object that conforms to that protocol only.
 
 ### License MIT
@@ -175,4 +182,3 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
-
