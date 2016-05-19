@@ -194,6 +194,16 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.required("")).to(equal(false))
                 }
             }
+			
+			describe("regex") {
+				it("should check if the value matches the pattern") {
+					expect(Validator.regex("ab|bc|ca")("ab")) == true
+					expect(Validator.regex("ab|bc|ca")("bc")) == true
+					expect(Validator.regex("ab|bc|ca")("ca")) == true
+					
+					expect(Validator.regex("ab|bc|ca")("ba")) == false
+				}
+			}
 
             describe("isUUID"){
                 it("should check if it is a valid UUID"){

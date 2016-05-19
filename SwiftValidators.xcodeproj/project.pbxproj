@@ -13,6 +13,7 @@
 		131584E21B5FFD7F0077E959 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131584E11B5FFD7F0077E959 /* Validator.swift */; };
 		13E80BC81B6BB64D001DFEA4 /* SwiftValidators.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */; };
 		13E80BCA1B6BB694001DFEA4 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 13E80BC91B6BB694001DFEA4 /* LICENSE */; };
+		13F2903D1CEDA9A50081F851 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 13F2903B1CEDA1080081F851 /* CHANGELOG.md */; };
 		D73D6CBEA6F4C4B64AE3C787 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D73D62E7F646ACCD88ABA593 /* README.md */; };
 		D73D6E5F64547D2C5557336A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73D6757670941DC51ADBD44 /* Extensions.swift */; };
 		FFA01A3BC9BFC00F54CFCD27 /* Pods_SwiftValidatorsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D590C794FFC3FF9BF8D6D1C9 /* Pods_SwiftValidatorsTests.framework */; };
@@ -39,6 +40,7 @@
 		131584E11B5FFD7F0077E959 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftValidators.podspec; sourceTree = "<group>"; };
 		13E80BC91B6BB694001DFEA4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		13F2903B1CEDA1080081F851 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		5F12C8F44A0B081C221B029B /* Pods-SwiftValidatorsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidatorsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidatorsTests/Pods-SwiftValidatorsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D590C794FFC3FF9BF8D6D1C9 /* Pods_SwiftValidatorsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidatorsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D73D62E7F646ACCD88ABA593 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		131584BB1B5FFCB60077E959 = {
 			isa = PBXGroup;
 			children = (
+				13F2903B1CEDA1080081F851 /* CHANGELOG.md */,
 				13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */,
 				D73D62E7F646ACCD88ABA593 /* README.md */,
 				13E80BC91B6BB694001DFEA4 /* LICENSE */,
@@ -237,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F2903D1CEDA9A50081F851 /* CHANGELOG.md in Resources */,
 				13E80BCA1B6BB694001DFEA4 /* LICENSE in Resources */,
 				D73D6CBEA6F4C4B64AE3C787 /* README.md in Resources */,
 				13E80BC81B6BB64D001DFEA4 /* SwiftValidators.podspec in Resources */,

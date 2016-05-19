@@ -60,9 +60,9 @@ public class Validator {
     private static let defaultValidator: Validator = Validator()
 
     private static let
-    ΕmailRegex: String = "[\\w._%+-|]+@[\\w0-9.-]+\\.[A-Za-z]{2,6}",
-    ΑlphaRegex: String = "[a-zA-Z]+",
-    Βase64Regex: String = "(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?",
+    EmailRegex: String = "[\\w._%+-|]+@[\\w0-9.-]+\\.[A-Za-z]{2,6}",
+    AlphaRegex: String = "[a-zA-Z]+",
+    Base64Regex: String = "(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?",
     CreditCardRegex: String = "(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\\d{3})\\d{11})",
     HexColorRegex: String = "#?([0-9A-F]{3}|[0-9A-F]{6})",
     HexadecimalRegex: String = "[0-9A-F]+",
@@ -431,6 +431,16 @@ public class Validator {
     public static var required: Validation {
         return Validator.defaultValidator.required
     }
+	
+	/**
+	check if the value fullfils the pattern. The value is matched from start to finish with the regex.
+	
+	- parameter pattern: The regex to check
+	- returns: (String) -> Bool
+	*/
+	public static func regex(pattern: String) -> Validation {
+		return Validator.defaultValidator.regex(pattern)
+	}
 
 
     // ------------------------ //
@@ -556,15 +566,7 @@ public class Validator {
     - returns: (String)->Bool
     */
     public var isAlpha: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-
-            let test = NSPredicate(format: "SELF MATCHES %@", Validator.ΑlphaRegex)
-            return test.evaluateWithObject(value)
-        }
+		return regex(Validator.AlphaRegex)
     }
     
     /**
@@ -573,13 +575,7 @@ public class Validator {
     - returns: (String)->Bool
     */
     public var isAlphanumeric: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.regexTest(Validator.AlphanumericRegex, value)
-        }
+		return regex(Validator.AlphanumericRegex)
     }
     
     /**
@@ -588,15 +584,7 @@ public class Validator {
     - returns: (String)->Bool
     */
     public var isBase64: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-
-            let test = NSPredicate(format: "SELF MATCHES %@", Validator.Βase64Regex)
-            return test.evaluateWithObject(value)
-        }
+		return self.regex(Validator.Base64Regex)
     }
 
     /**
@@ -695,16 +683,7 @@ public class Validator {
     - returns: (String)->Bool
     */
     public var isEmail: Validation {
-        return {
-            (value: String) -> Bool in
-
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-
-            let emailTest = NSPredicate(format: "SELF MATCHES %@", Validator.ΕmailRegex)
-            return emailTest.evaluateWithObject(value)
-        }
+		return self.regex(Validator.EmailRegex)
     }
 
     
@@ -1065,13 +1044,7 @@ public class Validator {
     - returns: (String)->Bool
     */
     public var isNumeric: Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.regexTest(Validator.NumericRegex, value)
-        }
+		return regex(Validator.NumericRegex)
     }
     
     /**
@@ -1081,13 +1054,7 @@ public class Validator {
     - returns: (String)->Bool
     */
     public func isPhone(locale: String) -> Validation {
-        return {
-            (value: String) in
-            if value == "" {
-                return (self.validationMode == .Default ? true : false)
-            }
-            return self.regexTest(Validator.PhoneRegex[locale]!, value)
-        }
+		return regex(Validator.PhoneRegex[locale]!)
     }
 
     
@@ -1178,8 +1145,25 @@ public class Validator {
             return value.characters.count >= length ? true : false
         }
     }
+	
+	/**
+	check if the value fullfils the pattern. The value is matched from start to finish with the regex.
+	
+	- parameter pattern: The regex to check
+	- returns: (String) -> Bool
+	*/
+	public func regex(pattern: String) -> Validation {
+		return {(value: String) -> Bool in
+			if value == "" {
+				return (self.validationMode == .Default ? true : false)
+			}
+			
+			let regexText = NSPredicate(format: "SELF MATCHES %@", pattern)
+			return regexText.evaluateWithObject(value)
+		}
+	}
 
-    
+	
     /**
     checks if it is not an empty string
 
