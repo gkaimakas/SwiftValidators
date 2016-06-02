@@ -11,6 +11,7 @@
 		131584D11B5FFCB60077E959 /* SwiftValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131584C51B5FFCB60077E959 /* SwiftValidators.framework */; };
 		131584D81B5FFCB60077E959 /* SwiftValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131584D71B5FFCB60077E959 /* SwiftValidatorsTests.swift */; };
 		131584E21B5FFD7F0077E959 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131584E11B5FFD7F0077E959 /* Validator.swift */; };
+		13459D7E1D001A1A00CEEA12 /* ValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13459D7D1D001A1A00CEEA12 /* ValueProvider.swift */; };
 		13E80BC81B6BB64D001DFEA4 /* SwiftValidators.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */; };
 		13E80BCA1B6BB694001DFEA4 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 13E80BC91B6BB694001DFEA4 /* LICENSE */; };
 		13F2903D1CEDA9A50081F851 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 13F2903B1CEDA1080081F851 /* CHANGELOG.md */; };
@@ -38,6 +39,7 @@
 		131584D61B5FFCB60077E959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		131584D71B5FFCB60077E959 /* SwiftValidatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftValidatorsTests.swift; sourceTree = "<group>"; };
 		131584E11B5FFD7F0077E959 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		13459D7D1D001A1A00CEEA12 /* ValueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueProvider.swift; sourceTree = "<group>"; };
 		13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftValidators.podspec; sourceTree = "<group>"; };
 		13E80BC91B6BB694001DFEA4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		13F2903B1CEDA1080081F851 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				131584C81B5FFCB60077E959 /* Supporting Files */,
 				131584E11B5FFD7F0077E959 /* Validator.swift */,
 				D73D6757670941DC51ADBD44 /* Extensions.swift */,
+				13459D7D1D001A1A00CEEA12 /* ValueProvider.swift */,
 			);
 			path = SwiftValidators;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				131584E21B5FFD7F0077E959 /* Validator.swift in Sources */,
+				13459D7E1D001A1A00CEEA12 /* ValueProvider.swift in Sources */,
 				D73D6E5F64547D2C5557336A /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

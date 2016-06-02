@@ -49,7 +49,6 @@ class ValidatorSpec : QuickSpec {
             describe("equals"){
                 it("should validate equal values"){
                     expect(Validator.equals("true")("true")).to(equal(true))
-                    expect(Validator.equals("sfafd")("")).to(equal(true))
                     expect(Validator.equals("true")("false")).to(equal(false))
                 }
             }
@@ -93,8 +92,8 @@ class ValidatorSpec : QuickSpec {
 
             describe("isDate"){
                 it("should check if it is a date"){
-                    expect(Validator.isDate("25/09/1987")).to(equal(true))
-                    expect(Validator.isDate("not a date")).to(equal(false))
+                    expect(Validator.isDate()("25/09/1987")).to(equal(true))
+                    expect(Validator.isDate()("not a date")).to(equal(false))
                 }
             }
 
@@ -102,7 +101,6 @@ class ValidatorSpec : QuickSpec {
                 it("should check if it exists in the array"){
                     let value = ["one", "two", "three"]
                     expect(Validator.isIn(value)("one")).to(equal(true))
-                    expect(Validator.isIn(value)("")).to(equal(true))
                     expect(Validator.isIn(value)("zero")).to(equal(false))
                 }
             }
@@ -121,7 +119,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isEmail("test+ext@gmail.com")).to(equal(true))
                     expect(Validator.isEmail("some.name.midd.leNa.me.+extension@GoogleMail.com")).to(equal(true))
                     expect(Validator.isEmail("gmail...ignores...dots...@gmail.com")).to(equal(true))
-                    expect(Validator.isEmail("")).to(equal(true))
 
                     expect(Validator.isEmail("tester")).to(equal(false))
                     expect(Validator.isEmail("invalidemail@")).to(equal(false))
@@ -210,7 +207,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isUUID("33041937-05b2-464a-98ad-3910cbe0d09e")).to(equal(true))
                     expect(Validator.isUUID("3304193705b2464a98ad3910cbe0d09e")).to(equal(false))
                     expect(Validator.isUUID("123")).to(equal(false))
-                    expect(Validator.isUUID("")).to(equal(true))
                 }
             }
 
@@ -219,7 +215,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isAlpha("asdsdgdfhdfASFSDGDFHFG")).to(equal(true))
                     expect(Validator.isAlpha("3304193705b2464a98ad3910cbe0d09e")).to(equal(false))
                     expect(Validator.isAlpha("123")).to(equal(false))
-                    expect(Validator.isAlpha("")).to(equal(true))
                 }
             }
 
@@ -244,7 +239,6 @@ class ValidatorSpec : QuickSpec {
 
             describe("isCreditCard"){
                 it("should check if it is a credit card"){
-                    expect(Validator.isCreditCard("")).to(equal(true))
                     expect(Validator.isCreditCard("375556917985515")).to(equal(true))
                     expect(Validator.isCreditCard("36050234196908")).to(equal(true))
                     expect(Validator.isCreditCard("4716461583322103")).to(equal(true))
@@ -263,7 +257,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isHexColor("#CCCCCC")).to(equal(true))
                     expect(Validator.isHexColor("fff")).to(equal(true))
                     expect(Validator.isHexColor("#f00")).to(equal(true))
-                    expect(Validator.isHexColor("")).to(equal(true))
 
                     expect(Validator.isHexColor("#ff")).to(equal(false))
                     expect(Validator.isHexColor("fff0")).to(equal(false))
@@ -275,7 +268,6 @@ class ValidatorSpec : QuickSpec {
                 it("should check if it is a hex color"){
                     expect(Validator.isHexadecimal("deadBEEF")).to(equal(true))
                     expect(Validator.isHexadecimal("ff0044")).to(equal(true))
-                    expect(Validator.isHexadecimal("")).to(equal(true))
 
                     expect(Validator.isHexadecimal("sgrl")).to(equal(false))
                     expect(Validator.isHexadecimal("--")).to(equal(false))
@@ -285,7 +277,6 @@ class ValidatorSpec : QuickSpec {
 
             describe("isASCII"){
                 it("should check if it is "){
-                    expect(Validator.isASCII("")).to(equal(true))
                     expect(Validator.isASCII("foobar")).to(equal(true))
                     expect(Validator.isASCII("0987654321")).to(equal(true))
                     expect(Validator.isASCII("test@example.com")).to(equal(true))
@@ -300,7 +291,6 @@ class ValidatorSpec : QuickSpec {
 
             describe("isNumeric"){
                 it("should check if it is "){
-                    expect(Validator.isNumeric("")).to(equal(true))
                     expect(Validator.isNumeric("123")).to(equal(true))
                     expect(Validator.isNumeric("00123")).to(equal(true))
                     expect(Validator.isNumeric("0")).to(equal(true))
@@ -342,7 +332,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isIPv6("::")).to(equal(true))
                     expect(Validator.isIPv6("::ffff:127.0.0.1")).to(equal(true))
                     expect(Validator.isIPv6("0:0:0:0:0:ffff:127.0.0.1")).to(equal(true))
-                    expect(Validator.isIPv6("")).to(equal(true))
 
                     expect(Validator.isIPv6("abc")).to(equal(false))
                     expect(Validator.isIPv6("256.0.0.0")).to(equal(false))
@@ -361,7 +350,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isIPv6("2001:db8:0000:1:1:1:1::1")).to(equal(false))
                     expect(Validator.isIPv6("0:0:0:0:0:0:ffff:127.0.0.1")).to(equal(false))
                     expect(Validator.isIPv6("0:0:0:0:ffff:127.0.0.1")).to(equal(false))
-
                 }
             }
 
@@ -379,7 +367,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isIP("::")).to(equal(true))
                     expect(Validator.isIP("::ffff:127.0.0.1")).to(equal(true))
                     expect(Validator.isIP("0:0:0:0:0:ffff:127.0.0.1")).to(equal(true))
-                    expect(Validator.isIP("")).to(equal(true))
 
                     expect(Validator.isIP("abc")).to(equal(false))
                     expect(Validator.isIP("256.0.0.0")).to(equal(false))
@@ -422,7 +409,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isISBN("10")("0 00 726970 6")).to(equal(true))
                     expect(Validator.isISBN("10")("3 423 21412 0")).to(equal(true))
                     expect(Validator.isISBN("10")("3 401 01319 X")).to(equal(true))
-                    expect(Validator.isISBN("10")("")).to(equal(true))
 
                     expect(Validator.isISBN("13")("9783836221191")).to(equal(true))
                     expect(Validator.isISBN("13")("978-3-8362-2119-1")).to(equal(true))
@@ -472,7 +458,6 @@ class ValidatorSpec : QuickSpec {
             describe("isMongoId"){
                 it("it should check if it is mongo id"){
                     expect(Validator.isMongoId("507f1f77bcf86cd799439011")).to(equal(true))
-                    expect(Validator.isMongoId("")).to(equal(true))
 
                     expect(Validator.isMongoId("507f1f77bcf86cd7994390")).to(equal(false))
                     expect(Validator.isMongoId("507f1f77bcf86cd79943901z")).to(equal(false))
@@ -483,7 +468,6 @@ class ValidatorSpec : QuickSpec {
                 it("it should check if it is alphanumeric"){
                     expect(Validator.isAlphanumeric("abc123")).to(equal(true))
                     expect(Validator.isAlphanumeric("ABC11")).to(equal(true))
-                    expect(Validator.isAlphanumeric("")).to(equal(true))
 
                     expect(Validator.isAlphanumeric("abc ")).to(equal(false))
                     expect(Validator.isAlphanumeric("foo!!")).to(equal(false))
@@ -498,7 +482,6 @@ class ValidatorSpec : QuickSpec {
                     expect(Validator.isFQDN()("foo--bar.com")).to(equal(true))
                     expect(Validator.isFQDN()("xn--froschgrn-x9a.com")).to(equal(true))
                     expect(Validator.isFQDN()("rebecca.blackfriday")).to(equal(true))
-                    expect(Validator.isFQDN()("")).to(equal(true))
 
                     expect(Validator.isFQDN()("abc")).to(equal(false))
                     expect(Validator.isFQDN()("256.0.0.0")).to(equal(false))

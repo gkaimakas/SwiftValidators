@@ -8,8 +8,7 @@ String validation for iOS developed in Swift. Inspired by [validator.js](https:/
 + [Installation](#installation)
 + [Walkthrough](#walkthrough)
 + [Usage](#usage)
-+ [Configuration](#configuration)
-+ [Supported functions](#supported-functions)
++ [Available validators](#supported-functions)
 + [License MIT](#license-mit)
 
 ### Installation
@@ -32,9 +31,6 @@ When you want to use SwiftValidators on a class simply import the framework
 ````
 import SwiftValidators
 ````
-or if you don't use cocoapods 
-
-copy [Validator.swift](https://github.com/gkaimakas/SwiftValidators/blob/master/SwiftValidators/Validator.swift) to your project file. Everything you will need is included.
 
 ### Walkthrough
 #### Usage
@@ -72,38 +68,8 @@ let reversedValidator = !Validator.isTrue
 ````
 The `reversedValidator` will be `false` when the value equals `"true"` and `true` for all other values.
 
-#### Configuration
-There are two ways to configure the available validators.
-+ Default Configuration (aka Class validators)
-+ Custom Configuration (aka instance validators)
 
-The validator class exposes each validator as a static member of the class. To do so it uses a singleton named defaultValidator with the default configuration options.
-
-Currently there are only two configuration options
-
-Option | Values | Description | Default Value
--------|--------|-------------|---------------
-validationMode | ValidationMode | An enum that confugures the behaviour when validating an empty string (""). If set to .Default empty strings are considered valid. If set to .Strict empty strings are considered invalid. | .Default
-dateFormat | String | When using date validators (isDate, isBefore, isAfter) the date format is used to convert the string to an NSDate object. | "dd/MM/yyyy"
-
-When custom behaviour is needed you can create a validator instance and configure its behaviour with one of the three constructors available:
-
-// default behaviour
-````
-Validator() 
-````
-// configure how empty strings should be treated
-````
-Validator(validationMode: Validator.ValidationMode) 
-````
-
-// configure empty strings and date format
-````
-Validator(validationMode: Validator.ValidationMode, dateFormat: String) 
-````
-
-
-### Supported validators
+### Available Validators
 
 Name|Description|Type|Arguments|Example
 ----|-----------|----|---------|-------
@@ -111,14 +77,14 @@ contains | checks if it is contained in the seed | func | String | Validator.con
 equals | checks if it equals another | func | String | Validator.equals("aa")("aa") 
 exactLength | checks if it has the exact length | func |  Int | Validator.exactLength(2)("aa")
 isASCII | checks if it is valid ascii string | var | - | Validator.isASCII("SDGSFG")
-isAfter | checks if it is after the date | func | String | Validator.isAfter("23/07/2015")("24/07/2015")
+isAfter | checks if it is after the date | func | String, String | Validator.isAfter("23/07/2015", format: "dd/MM/yyyy")("24/07/2015")
 isAlpha|checks if it has only letters|var|-|Validator.isAlpha("abc")
 isAlphanumeric|checks if it has letters and numbers only|var|-|Validator.isAlphanumeric("abc123")
 isBase64 | checks if it a valid base64 string | var | - | Validator.isBase64("some string")
-isBefore|checks if it is before the date | func|String|Validator.isBefore("25/09/1987")("29/03/1994")
+isBefore|checks if it is before the date | func|String, String|Validator.isBefore("25/09/1987", format: "dd/MM/yyyy")("29/03/1994")
 isBool|checks if it is boolean|var|-|Validator.isBool("true")
 isCreditCard|checks if it is a credit card number|var|-|Validator.isCreditCard("123")
-isDate|checks if it is a valid date|var|-|Validator.isDate("25/09/1987")
+isDate|checks if it is a valid date|func|String|Validator.isDate("dd/MM/yyyy")("25/09/1987")
 isEmail|checks if it is an email|var|-|Validator.isEmail("gkaimakas@gmail.com")
 isEmpty|checks if it is an empty string|var|-|Validator.isEmpty("")
 isFQDN|checks if it is fully qualified domain name| func| FQDNOptions or empty| Validator.isFQDN()("ABC")
@@ -143,21 +109,20 @@ maxLength|checks if the length does not exceed the max length|func|Int|Validator
 minLength|checks if the length isn't lower than|func|Int|Validator.minLength(1)("213")
 required|checks if it is not an empty string|var|-|Validator.required("")
 regex| checks that the value matches the regex from start to finish| func | String | Validator.regex(pattern)
-watch| check the delegate for equality | func | ValidatorProtocol | Validator.watch(delegate) 
+watch| check the delegate for equality | func | ValueProvider | Validator.watch(delegate) 
 
 *FQDNOptions is a class that is used on isFQDN for configuration purposes. It can be instantiated like this: 
 ````
 FQDNOptions(requireTLD: Bool, allowUnderscores: Bool, allowTrailingDot: Bool)
 ````
 
-### Validator Protocol
+### ValueProvider
 
-Validator protocol is a simple protocol that is used to get the string value of an object. For that purpose it exposes only
-a single function
+ValueProvider is a simple protocol that is used to get the string value of an object. For that purpose it exposes a getter 
 ````
-func getValue() -> String
+var value: String
 ````
-The watch validator accepts an object that conforms to that protocol only.
+The watch validator accepts an object that conforms to that protocol.
 
 ### License MIT
 
