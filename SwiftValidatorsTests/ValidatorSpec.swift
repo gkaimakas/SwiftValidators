@@ -15,11 +15,11 @@ struct TestCase {
 	let name: String
 	let message: String
 	let validator: Validator
-	let valid: [StringConvertible]
-	let invalid: [StringConvertible]
+	let valid: [StringConvertible?]
+	let invalid: [StringConvertible?]
 }
 
-class ValidatorSpec_v2: QuickSpec {
+class ValidatorSpec: QuickSpec {
 	override func spec() {
 		super.spec()
 		
@@ -50,7 +50,8 @@ class ValidatorSpec_v2: QuickSpec {
 				invalid: [
 					"something",
 					"fals_e",
-					""
+					"",
+					nil
 				]
 			),
 			
@@ -87,7 +88,8 @@ class ValidatorSpec_v2: QuickSpec {
 					"some_string"
 				],
 				invalid: [
-					"some_other_string"
+					"some_other_string",
+					nil
 				]
 			),
 			
@@ -143,7 +145,8 @@ class ValidatorSpec_v2: QuickSpec {
 				],
 				invalid: [
 					"3304193705b2464a98ad3910cbe0d09e",
-					"123"
+					"123",
+					nil
 				]
 			),
 			
@@ -357,7 +360,8 @@ class ValidatorSpec_v2: QuickSpec {
 				invalid: [
 					"#ff",
 					"ff00",
-					"ff12fg"
+					"ff12fg",
+					nil
 				]
 			),
 			
@@ -666,7 +670,8 @@ class ValidatorSpec_v2: QuickSpec {
 					1234
 				],
 				invalid: [
-					""
+					"",
+					nil
 				]
 			)
 		]

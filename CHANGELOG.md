@@ -1,6 +1,18 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.0] - August 2016
+
+SwiftValidators had a birthday this month. What better way to celebrate than to bump the version to 4.0.0. 
+This version intruduces many changes to the whole api that aim to make it usable in many more situations.
+
+- Gone are the computed variables of old. The whole api supports only functions. The move to functions-only api was neccesitated by the need to support nullable values.
+- Hey! A validator can now validate nil values. By default when a nil value is validated the result is false but by setting the nilResponse on the function that generates the validator one can control the result/
+- Added StringConvertible. It's a protocol that returns a string representation of a type. The typealias Validator now accepts a StringConvertible instead of a string allowing it to be more flexible. You can now validate Ints for instance. Bools, Doubles, Floats, Ints, NSStrings and Strings all implement StringConvertible.
+- isISBN's arguments have been changed. Use ISBN (enum) instead.
+- isPhone's arguments have been changed. Use Phone (enum) instad.
+
+
 ## [3.0.0] - June 2nd 2016
 
 SwiftValidators has undergone a complete overhaul to make the api more readable and swift-like.

@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+extension Int: StringConvertible {
+	public var string: String? {
+		return String(self)
+	}
+}

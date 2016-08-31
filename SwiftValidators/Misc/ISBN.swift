@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+public enum ISBN: String {
+	case v10 = "10"
+	case v13 = "13"
+}

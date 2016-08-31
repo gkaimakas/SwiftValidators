@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+extension Double: StringConvertible {
+	public var string: String? {
+		return String(self)
+	}
+}
