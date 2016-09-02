@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.1] - September 2016
+
+- Updated documentation
+
 ## [4.0.0] - August 2016
 
 SwiftValidators had a birthday this month. What better way to celebrate than to bump the version to 4.0.0. 
