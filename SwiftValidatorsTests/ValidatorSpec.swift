@@ -578,8 +578,8 @@ class ValidatorSpec: QuickSpec {
 				]
 			),
 			
-			TestCase(name: "isPhone",
-				message: "should validate phones",
+			TestCase(name: "isPhone_el_GR",
+				message: "should validate phone numbers from Greece",
 				validator: Validators.isPhone(.el_GR),
 				valid: [
 					"2101231231",
@@ -592,7 +592,54 @@ class ValidatorSpec: QuickSpec {
 					"1231341412"
 				]
 			),
-			
+
+			TestCase(name: "isPhone_nl_BE",
+        message: "should validate phone numbers from Belgium",
+        validator: Validators.isPhone(.nl_BE),
+        valid: [
+          "0123456789",
+          "0032123456789",
+          "+32123456789"
+        ],
+        invalid: [
+          "1234567890",
+          "0412345678",
+          "+31123456789",
+          "01234567890"
+        ]
+      ),
+
+			TestCase(name: "isPhone_nl_BE_mobile",
+        message: "should validate phone numbers from Belgian mobile phones",
+        validator: Validators.isPhone(.nl_BE_mobile),
+        valid: [
+          "04123456789",
+          "00324123456789",
+          "+324123456789",
+        ],
+        invalid: [
+          "1234567890",
+          "0412345678",
+          "+31123456789",
+          "01234567890"
+        ]
+      ),
+
+			TestCase(name: "isPhone_nl_NL",
+        message: "should validate phone numbers from The Netherlands",
+        validator: Validators.isPhone(.nl_NL),
+        valid: [
+          "0123456789",
+          "0031123456789",
+          "+31123456789"
+        ],
+        invalid: [
+          "012345678",
+          "1234567890",
+          "+311234567890"
+        ]
+      ),
+
 			TestCase(name: "isTrue",
 				message: "should validate true",
 				validator: Validators.isTrue(),
