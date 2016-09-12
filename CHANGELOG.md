@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.2] - September 2016
+
+- Added a new validator: `isPostalCode`
+- Added some new phone validators
+
 ## [4.0.1] - September 2016
 
 - Updated documentation
