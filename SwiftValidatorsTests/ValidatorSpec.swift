@@ -640,6 +640,63 @@ class ValidatorSpec: QuickSpec {
         ]
       ),
 
+      TestCase(name: "isPostalCode_BE",
+        message: "should validate Belgian postal codes",
+        validator: Validators.isPostalCode(.BE),
+        valid: [
+          "1000",
+          "9999"
+        ],
+        invalid: [
+         "123",
+         "123456",
+         "ABCDAB"
+        ]
+      ),
+
+      TestCase(name: "isPostalCode_GB",
+        message: "should validate British postal codes",
+        validator: Validators.isPostalCode(.GB),
+        valid: [
+          "B45 0HY",
+          "CV32 7NG",
+          "HD5 8UR"
+        ],
+        invalid: [
+          "1234",
+          "1234A",
+          "ABCDAB"
+        ]
+      ),
+
+			TestCase(name: "isPostalCode_NL",
+        message: "should validate Dutch postal codes",
+        validator: Validators.isPostalCode(.NL),
+        valid: [
+          "5171KW",
+          "1234 AB"
+        ],
+        invalid: [
+          "1234",
+          "1234A",
+          "ABCDAB"
+        ]
+      ),
+
+			TestCase(name: "isPostalCode_US",
+        message: "should validate United-States postal codes",
+        validator: Validators.isPostalCode(.US),
+        valid: [
+          "90201"
+        ],
+        invalid: [
+          "1234",
+          "1234A",
+          "1234AB",
+          "ABCDAB"
+        ]
+      ),
+
 			TestCase(name: "isTrue",
 				message: "should validate true",
 				validator: Validators.isTrue(),

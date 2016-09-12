@@ -595,11 +595,20 @@ public class Validators {
     - parameter locale: The locale as a String. Available locales are 'zh-CN', 'en-ZA', 'en-AU', 'en-HK', 'pt-PT', 'fr-FR', 'el-GR', 'en-GB', 'en-US', 'en-ZM', 'ru-RU
     - returns: (String)->Bool
     */
-	public static func isPhone(locale: Phone, nilResponse: Bool = false) -> Validator {
-		return regex(locale.rawValue, nilResponse: nilResponse)
+    public static func isPhone(locale: Phone, nilResponse: Bool = false) -> Validator {
+      return regex(locale.rawValue, nilResponse: nilResponse)
     }
 
-    
+    /**
+    Checks if postal code is valid
+
+    - parameter country code:
+    - returns (String)->Bool
+    */
+    public static func isPostalCode(countryCode: PostalCode, nilResponse: Bool = false) -> Validator {
+      return regex(countryCode.rawValue, nilResponse: nilResponse)
+    }
+
     /**
     Checks if it is true
     
@@ -613,7 +622,6 @@ public class Validators {
         }
     }
 
-    
     /**
     Checks if it is a valid UUID
     
