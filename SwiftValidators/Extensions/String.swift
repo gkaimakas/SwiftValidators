@@ -11,7 +11,7 @@ import Foundation
 internal extension String {
 	
 	internal subscript (i: Int) -> String{
-		return "\(self[self.startIndex.advancedBy(i)])"
+		return "\(self[self.characters.index(self.startIndex, offsetBy: i)])"
 	}
 	
 	internal var length: Int {
