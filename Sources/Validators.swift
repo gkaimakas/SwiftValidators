@@ -44,7 +44,7 @@ public class Validators {
         }
     }
 
-    fileprivate static let
+    private static let
 		EmailRegex: String = "[\\w._%+-|]+@[\\w0-9.-]+\\.[A-Za-z]{2,6}",
 		AlphaRegex: String = "[a-zA-Z]+",
 		Base64Regex: String = "(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?",
