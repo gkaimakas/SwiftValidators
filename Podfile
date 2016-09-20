@@ -1,6 +1,4 @@
-
 use_frameworks!
-
 
 target 'SwiftValidators' do
 end

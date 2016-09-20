@@ -26,14 +26,13 @@
 		13E80BCA1B6BB694001DFEA4 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 13E80BC91B6BB694001DFEA4 /* LICENSE */; };
 		13F2903D1CEDA9A50081F851 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 13F2903B1CEDA1080081F851 /* CHANGELOG.md */; };
 		98230A4E09FD608BE32EC534 /* Pods_SwiftValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229CDA69E8830ADE09A57BCD /* Pods_SwiftValidators.framework */; };
-		A771F99CAF4998512EA7D64C /* Pods_SwiftValidators_SwiftValidatorsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257FF300FFADC4E0F66BFA20 /* Pods_SwiftValidators_SwiftValidatorsTests.framework */; };
 		B166F1EC1D86B32D0015E611 /* PostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F1EB1D86B32D0015E611 /* PostalCode.swift */; };
 		D73D6CBEA6F4C4B64AE3C787 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D73D62E7F646ACCD88ABA593 /* README.md */; };
 		FFA01A3BC9BFC00F54CFCD27 /* Pods_SwiftValidatorsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D590C794FFC3FF9BF8D6D1C9 /* Pods_SwiftValidatorsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		13CAAF461D915CF6004D6AB5 /* PBXContainerItemProxy */ = {
+		13CAAF4B1D9163A8004D6AB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 131584BC1B5FFCB60077E959 /* Project object */;
 			proxyType = 1;
@@ -68,14 +67,12 @@
 		229CDA69E8830ADE09A57BCD /* Pods_SwiftValidators.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidators.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		257FF300FFADC4E0F66BFA20 /* Pods_SwiftValidators_SwiftValidatorsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidators_SwiftValidatorsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F9F3E440D584332B673B49 /* Pods-SwiftValidators.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidators.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidators/Pods-SwiftValidators.release.xcconfig"; sourceTree = "<group>"; };
-		3F98D5E96D1B1F540BD8FB7D /* Pods-SwiftValidators-SwiftValidatorsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidators-SwiftValidatorsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidators-SwiftValidatorsTests/Pods-SwiftValidators-SwiftValidatorsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F12C8F44A0B081C221B029B /* Pods-SwiftValidatorsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidatorsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidatorsTests/Pods-SwiftValidatorsTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A1DCAAFA5A9A242CEBE6E77 /* Pods-SwiftValidators.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidators.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidators/Pods-SwiftValidators.debug.xcconfig"; sourceTree = "<group>"; };
 		B166F1EB1D86B32D0015E611 /* PostalCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalCode.swift; sourceTree = "<group>"; };
 		D590C794FFC3FF9BF8D6D1C9 /* Pods_SwiftValidatorsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidatorsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D73D62E7F646ACCD88ABA593 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		D73D6B6685CBA1FC3B4D6E99 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		E367A9ECFB86E565638ABD19 /* Pods-SwiftValidators-SwiftValidatorsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidators-SwiftValidatorsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidators-SwiftValidatorsTests/Pods-SwiftValidators-SwiftValidatorsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +90,6 @@
 			files = (
 				131584D11B5FFCB60077E959 /* SwiftValidators.framework in Frameworks */,
 				FFA01A3BC9BFC00F54CFCD27 /* Pods_SwiftValidatorsTests.framework in Frameworks */,
-				A771F99CAF4998512EA7D64C /* Pods_SwiftValidators_SwiftValidatorsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +103,7 @@
 				13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */,
 				D73D62E7F646ACCD88ABA593 /* README.md */,
 				13E80BC91B6BB694001DFEA4 /* LICENSE */,
-				131584C71B5FFCB60077E959 /* SwiftValidators */,
+				131584C71B5FFCB60077E959 /* Sources */,
 				131584D41B5FFCB60077E959 /* SwiftValidatorsTests */,
 				131584C61B5FFCB60077E959 /* Products */,
 				8249FC70A763218BCB3EB1A2 /* Pods */,
@@ -125,14 +121,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		131584C71B5FFCB60077E959 /* SwiftValidators */ = {
+		131584C71B5FFCB60077E959 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				131584CA1B5FFCB60077E959 /* SwiftValidators.h */,
 				131584C81B5FFCB60077E959 /* Supporting Files */,
 				13CAAF451D915B7D004D6AB5 /* Sources */,
 			);
-			path = SwiftValidators;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		131584C81B5FFCB60077E959 /* Supporting Files */ = {
@@ -214,8 +210,6 @@
 				5F12C8F44A0B081C221B029B /* Pods-SwiftValidatorsTests.release.xcconfig */,
 				8A1DCAAFA5A9A242CEBE6E77 /* Pods-SwiftValidators.debug.xcconfig */,
 				32F9F3E440D584332B673B49 /* Pods-SwiftValidators.release.xcconfig */,
-				3F98D5E96D1B1F540BD8FB7D /* Pods-SwiftValidators-SwiftValidatorsTests.debug.xcconfig */,
-				E367A9ECFB86E565638ABD19 /* Pods-SwiftValidators-SwiftValidatorsTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -268,7 +262,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				13CAAF471D915CF6004D6AB5 /* PBXTargetDependency */,
+				13CAAF4C1D9163A8004D6AB5 /* PBXTargetDependency */,
 			);
 			name = SwiftValidatorsTests;
 			productName = SwiftValidatorsTests;
@@ -447,10 +441,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		13CAAF471D915CF6004D6AB5 /* PBXTargetDependency */ = {
+		13CAAF4C1D9163A8004D6AB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 131584C41B5FFCB60077E959 /* SwiftValidators */;
-			targetProxy = 13CAAF461D915CF6004D6AB5 /* PBXContainerItemProxy */;
+			targetProxy = 13CAAF4B1D9163A8004D6AB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -564,7 +558,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = SwiftValidators/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -588,7 +582,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = SwiftValidators/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
