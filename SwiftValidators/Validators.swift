@@ -10,32 +10,32 @@ import Foundation
 
 public typealias Validator = (StringConvertible?) -> Bool
 
-public func || (lhs: Validator, rhs: Validator) -> Validator {
+public func || (lhs: @escaping Validator, rhs: @escaping Validator) -> Validator {
 	return { (value: StringConvertible?) -> Bool in
 		return lhs(value) || rhs(value)
 	}
 }
 
-public func && (lhs: Validator, rhs: Validator) -> Validator {
+public func && (lhs: @escaping Validator, rhs: @escaping Validator) -> Validator {
 	return { (value: StringConvertible?) -> Bool in
 		return lhs(value) && rhs(value)
 	}
 }
 
-public prefix func ! (rhs: Validator) -> Validator {
+public prefix func ! (rhs: @escaping Validator) -> Validator {
 	return { (value: StringConvertible?) -> Bool in
 		return !rhs(value)
 	}
 }
 
-public class Validators {
+open class Validators {
 
-    public class FQDNOptions {
-        public static let defaultOptions: FQDNOptions = FQDNOptions(requireTLD: true, allowUnderscores: false, allowTrailingDot: false)
+    open class FQDNOptions {
+        open static let defaultOptions: FQDNOptions = FQDNOptions(requireTLD: true, allowUnderscores: false, allowTrailingDot: false)
 
-        public let requireTLD: Bool
-        public let allowUnderscores: Bool
-        public let allowTrailingDot: Bool
+        open let requireTLD: Bool
+        open let allowUnderscores: Bool
+        open let allowTrailingDot: Bool
 
         public init(requireTLD: Bool, allowUnderscores: Bool, allowTrailingDot: Bool) {
             self.requireTLD = requireTLD
@@ -44,7 +44,7 @@ public class Validators {
         }
     }
 
-    private static let
+    fileprivate static let
 		EmailRegex: String = "[\\w._%+-|]+@[\\w0-9.-]+\\.[A-Za-z]{2,6}",
 		AlphaRegex: String = "[a-zA-Z]+",
 		Base64Regex: String = "(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?",
@@ -70,11 +70,11 @@ public class Validators {
     - parameter seed:
     - returns: (StringConvertible)->Bool
     */
-	public static func contains(string: String, nilResponse: Bool = false) -> Validator {
+	open static func contains(_ string: String, nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
 			
-            return value.rangeOfString(string) != nil
+            return value.range(of: string) != nil
         }
     }
 
@@ -84,7 +84,7 @@ public class Validators {
     - parameter seed:
     - returns: (StringConvertible)->Bool
     */
-	public static func equals(string: String, nilResponse: Bool = false) -> Validator {
+	open static func equals(_ string: String, nilResponse: Bool = false) -> Validator {
         return {
 			(value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
@@ -98,7 +98,7 @@ public class Validators {
     - parameter length:
     - returns: (StringConvertible)->Bool
     */
-	public static func exactLength(length: Int, nilResponse: Bool = false) -> Validator {
+	open static func exactLength(_ length: Int, nilResponse: Bool = false) -> Validator {
         return {
 			(value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
@@ -111,7 +111,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-	public static func isASCII(nilResponse nilResponse:Bool = false) -> Validator {
+	open static func isASCII(nilResponse:Bool = false) -> Validator {
 		return self.regex(Validators.ASCIIRegex, nilResponse: nilResponse)
     }
 
@@ -123,24 +123,24 @@ public class Validators {
 	
     - returns: (StringConvertible)->Bool
     */
-	public static func isAfter(date: String, format: String = "dd/MM/yyyy", nilResponse: Bool = false) -> Validator {
+	open static func isAfter(_ date: String, format: String = "dd/MM/yyyy", nilResponse: Bool = false) -> Validator {
         return {
             (value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
 			
-			let dateFormatter = NSDateFormatter()
+			let dateFormatter = DateFormatter()
 			dateFormatter.dateFormat = format
-			let startDate: NSDate? = dateFormatter.dateFromString(date)
+			let startDate: Date? = dateFormatter.date(from: date)
 			
-            let date: NSDate? = dateFormatter.dateFromString(value)
+            let date: Date? = dateFormatter.date(from: value)
             if let _date = date {
                 let comparison = _date.compare(startDate!)
                 switch (comparison) {
-                case NSComparisonResult.OrderedAscending:
+                case ComparisonResult.orderedAscending:
                     return false
-                case NSComparisonResult.OrderedSame:
+                case ComparisonResult.orderedSame:
                     return true
-                case NSComparisonResult.OrderedDescending:
+                case ComparisonResult.orderedDescending:
                     return true
                 }
             } else {
@@ -155,7 +155,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isAlpha(nilResponse nilResponse:Bool = false) -> Validator {
+    open static func isAlpha(nilResponse:Bool = false) -> Validator {
 		return regex(Validators.AlphaRegex, nilResponse: nilResponse)
     }
     
@@ -164,7 +164,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isAlphanumeric(nilResponse nilResponse:Bool = false) -> Validator {
+    open static func isAlphanumeric(nilResponse:Bool = false) -> Validator {
 		return regex(Validators.AlphanumericRegex, nilResponse: nilResponse)
     }
     
@@ -173,7 +173,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isBase64(nilResponse nilResponse:Bool = false) -> Validator {
+    open static func isBase64(nilResponse:Bool = false) -> Validator {
 		return self.regex(Validators.Base64Regex, nilResponse: nilResponse)
     }
 
@@ -183,22 +183,22 @@ public class Validators {
     - parameter date: A date as a string
     - returns: (StringConvertible)->Bool
     */
-	public static func isBefore(date: String, format: String = "dd/MM/yyyy", nilResponse:Bool = false) -> Validator {
+	open static func isBefore(_ date: String, format: String = "dd/MM/yyyy", nilResponse:Bool = false) -> Validator {
         return { (value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
 			
-			let dateFormatter = NSDateFormatter()
+			let dateFormatter = DateFormatter()
 			dateFormatter.dateFormat = format
-			let startDate: NSDate? = dateFormatter.dateFromString(date)
-            let date: NSDate? = dateFormatter.dateFromString(value)
+			let startDate: Date? = dateFormatter.date(from: date)
+            let date: Date? = dateFormatter.date(from: value)
             if let _date = date {
                 let comparison = _date.compare(startDate!)
                 switch (comparison) {
-                case NSComparisonResult.OrderedAscending:
+                case ComparisonResult.orderedAscending:
                     return true
-                case NSComparisonResult.OrderedSame:
+                case ComparisonResult.orderedSame:
                     return true
-                case NSComparisonResult.OrderedDescending:
+                case ComparisonResult.orderedDescending:
                     return false
                 }
             } else {
@@ -213,7 +213,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isBool(nilResponse nilResponse:Bool = false) -> Validator {
+    open static func isBool(nilResponse:Bool = false) -> Validator {
 		return self.isTrue(nilResponse: nilResponse) || self.isFalse(nilResponse: nilResponse)
     }
 
@@ -223,7 +223,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-	public static func isCreditCard(nilResponse nilResponse: Bool = false) -> Validator {
+	open static func isCreditCard(nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) in
 			
 			guard let value = value?.string else { return nilResponse }
@@ -231,7 +231,7 @@ public class Validators {
             let test = NSPredicate(format: "SELF MATCHES %@", Validators.CreditCardRegex)
             var clearValue = self.removeDashes(value)
             clearValue = self.removeSpaces(clearValue)
-            return test.evaluateWithObject(clearValue)
+            return test.evaluate(with: clearValue)
         }
     }
 
@@ -244,14 +244,14 @@ public class Validators {
     - returns: (StringConvertible)->Bool
 	
     */
-	public static func isDate(format: String = "dd/MM/yyyy", nilResponse: Bool = false) -> Validator {
+	open static func isDate(_ format: String = "dd/MM/yyyy", nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) -> Bool in
 			
 			guard let value = value?.string else { return nilResponse }
 			
-			let dateFormatter = NSDateFormatter()
+			let dateFormatter = DateFormatter()
 			dateFormatter.dateFormat = format
-            let date: NSDate? = dateFormatter.dateFromString(value)
+            let date: Date? = dateFormatter.date(from: value)
             if let _ = date {
                 return true
             } else {
@@ -267,7 +267,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isEmail(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isEmail(nilResponse: Bool = false) -> Validator {
 		return self.regex(Validators.EmailRegex, nilResponse: nilResponse)
     }
 
@@ -277,7 +277,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isEmpty(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isEmpty(nilResponse: Bool = false) -> Validator {
 		return equals("", nilResponse: nilResponse)
     }
 
@@ -287,17 +287,17 @@ public class Validators {
     - parameter options: An instance of FDQNOptions
     - returns: (StringConvertible)->Bool
     */
-	public static func isFQDN(options: FQDNOptions = FQDNOptions.defaultOptions, nilResponse: Bool = false) -> Validator {
+	open static func isFQDN(_ options: FQDNOptions = FQDNOptions.defaultOptions, nilResponse: Bool = false) -> Validator {
 		return { (value: StringConvertible?) in
 			
 			guard let value = value?.string else { return nilResponse }
 
             var string = value
             if (options.allowTrailingDot && string.lastCharacter == ".") {
-				string = string.substringWithRange(string.startIndex.advancedBy(0) ..< string.startIndex.advancedBy(string.length))
+				string = string.substring(with: string.characters.index(string.startIndex, offsetBy: 0) ..< string.characters.index(string.startIndex, offsetBy: string.length))
             }
 
-            var parts = string.characters.split(allowEmptySlices: true) {
+            var parts = string.characters.split(omittingEmptySubsequences: false) {
                 $0 == "."
             }.map { String($0) }
 
@@ -336,11 +336,11 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-	public static func isFalse(nilResponse nilResponse: Bool = false) -> Validator {
+	open static func isFalse(nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
 			
-            return value.lowercaseString == "false"
+            return value.lowercased() == "false"
         }
     }
 
@@ -350,7 +350,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isFloat(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isFloat(nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
             return self.regex(Validators.FloatRegex)(value)
@@ -362,10 +362,10 @@ public class Validators {
 	
 	- returns: (StringConvertible)->Bool
 	*/
-	public static func isHexadecimal(nilResponse nilResponse: Bool = false) -> Validator {
+	open static func isHexadecimal(nilResponse: Bool = false) -> Validator {
 		return { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
-			let newValue = value.uppercaseString
+			let newValue = value.uppercased()
 			return self.regex(Validators.HexadecimalRegex, nilResponse: nilResponse)(newValue)
 		}
 	}
@@ -375,13 +375,13 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isHexColor(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isHexColor(nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
 			
             let test = NSPredicate(format: "SELF MATCHES %@", Validators.HexColorRegex)
-            let newValue = value.uppercaseString
-            let result = test.evaluateWithObject(newValue)
+            let newValue = value.uppercased()
+            let result = test.evaluate(with: newValue)
             return result
         }
     }
@@ -391,7 +391,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isIP(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isIP(nilResponse: Bool = false) -> Validator {
 		return isIPv4(nilResponse: nilResponse) || isIPv6(nilResponse: nilResponse)
     }
 
@@ -402,7 +402,7 @@ public class Validators {
     - returns: (StringConvertible)->Bool
     */
 	
-	public static func isIPv4(nilResponse nilResponse: Bool = false) -> Validator {
+	open static func isIPv4(nilResponse: Bool = false) -> Validator {
 		return regex(Validators.IPRegex["4"]!, nilResponse: nilResponse)
     }
 
@@ -412,11 +412,11 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isIPv6(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isIPv6(nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
             let string: String = self.removeDashes(self.removeSpaces(value))
-            var blocks = string.characters.split(allowEmptySlices: true) {
+            var blocks = string.characters.split(omittingEmptySubsequences: false) {
                 $0 == ":"
             }.map { String($0) }
 
@@ -436,11 +436,11 @@ public class Validators {
 
             if (string == "::") {
                 return true
-            } else if (string.substringToIndex(string.startIndex.advancedBy(2)) == "::") {
-                blocks.removeAtIndex(0)
-                blocks.removeAtIndex(0)
+            } else if (string.substring(to: string.characters.index(string.startIndex, offsetBy: 2)) == "::") {
+                blocks.remove(at: 0)
+                blocks.remove(at: 0)
                 foundOmissionBlock = true
-            } else if (String(Array(string.characters.reverse())).substringToIndex(string.startIndex.advancedBy(2)) == "::") {
+            } else if (String(Array(string.characters.reversed())).substring(to: string.characters.index(string.startIndex, offsetBy: 2)) == "::") {
                 blocks.removeLast()
                 blocks.removeLast()
                 foundOmissionBlock = true
@@ -473,7 +473,7 @@ public class Validators {
     - parameter version: ISBN version "10" or "13"
     - returns: (StringConvertible)->Bool
     */
-	public static func isISBN(version: ISBN, nilResponse: Bool = false) -> Validator {
+	open static func isISBN(_ version: ISBN, nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
 			
@@ -488,13 +488,13 @@ public class Validators {
             if (version.rawValue == "10") {
 
                 for i in 0 ..< 9 {
-                    checkSum += (i + 1) * Int("\(sanitized[sanitized.startIndex.advancedBy(i)])")!
+                    checkSum += (i + 1) * Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: i)])")!
                 }
 
-                if ("\(sanitized[sanitized.startIndex.advancedBy(9)])".lowercaseString == "x") {
+                if ("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: 9)])".lowercased() == "x") {
                     checkSum += 10 * 10
                 } else {
-                    checkSum += 10 * Int("\(sanitized[sanitized.startIndex.advancedBy(9)])")!
+                    checkSum += 10 * Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: 9)])")!
                 }
 
                 if (checkSum % 11 == 0) {
@@ -504,11 +504,11 @@ public class Validators {
             } else if (version.rawValue == "13") {
                 var factor = [1, 3]
                 for i in 0 ..< 12 {
-                    let charAt: Int = Int("\(sanitized[sanitized.startIndex.advancedBy(i)])")!
+                    let charAt: Int = Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: i)])")!
                     checkSum += factor[i % 2] * charAt
                 }
 
-                let charAt12 = Int("\(sanitized[sanitized.startIndex.advancedBy(12)])")!
+                let charAt12 = Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: 12)])")!
                 if ((charAt12 - ((10 - (checkSum % 10)) % 10)) == 0) {
                     return true
                 }
@@ -524,13 +524,13 @@ public class Validators {
     - parameter array: An array of strings
     - returns: (StringConvertible)->Bool
     */
-	public static func isIn(array: Array<String>, nilResponse: Bool = false) -> Validator {
+	open static func isIn(_ array: Array<String>, nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) -> Bool in
 			
 			guard let value = value?.string else { return nilResponse }
 			
 			return array
-				.indexOf(value) != nil
+				.index(of: value) != nil
         }
     }
 
@@ -540,7 +540,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isInt(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isInt(nilResponse: Bool = false) -> Validator {
 		return isNumeric(nilResponse: nilResponse)
     }
 
@@ -550,12 +550,12 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isLowercase(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isLowercase(nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) -> Bool in
 			
 			guard let value = value?.string else { return nilResponse }
 			
-            return value == value.lowercaseString
+            return value == value.lowercased()
         }
     }
 
@@ -564,7 +564,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isMongoId(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isMongoId(nilResponse: Bool = false) -> Validator {
 		return isHexadecimal(nilResponse: nilResponse) && exactLength(24, nilResponse: nilResponse)
 	}
 	
@@ -574,7 +574,7 @@ public class Validators {
 	- returns: (StringConvertible)->Bool
 	*/
 	
-	public static func isNil() -> Validator {
+	open static func isNil() -> Validator {
 		return { (value: StringConvertible?) -> Bool in
 			return value?.string == nil
 		}
@@ -585,7 +585,7 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isNumeric(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isNumeric(nilResponse: Bool = false) -> Validator {
 		return regex(Validators.NumericRegex, nilResponse: nilResponse)
     }
     
@@ -595,7 +595,7 @@ public class Validators {
     - parameter locale: The locale as a String. Available locales are 'zh-CN', 'en-ZA', 'en-AU', 'en-HK', 'pt-PT', 'fr-FR', 'el-GR', 'en-GB', 'en-US', 'en-ZM', 'ru-RU
     - returns: (String)->Bool
     */
-    public static func isPhone(locale: Phone, nilResponse: Bool = false) -> Validator {
+    open static func isPhone(_ locale: Phone, nilResponse: Bool = false) -> Validator {
       return regex(locale.rawValue, nilResponse: nilResponse)
     }
 
@@ -605,7 +605,7 @@ public class Validators {
     - parameter country code:
     - returns (String)->Bool
     */
-    public static func isPostalCode(countryCode: PostalCode, nilResponse: Bool = false) -> Validator {
+    open static func isPostalCode(_ countryCode: PostalCode, nilResponse: Bool = false) -> Validator {
       return regex(countryCode.rawValue, nilResponse: nilResponse)
     }
 
@@ -614,11 +614,11 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-    public static func isTrue(nilResponse nilResponse: Bool = false) -> Validator {
+    open static func isTrue(nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
 			
-            return value.lowercaseString == String(true)
+            return value.lowercased() == String(true)
         }
     }
 
@@ -627,12 +627,12 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-	public static func isUUID(nilResponse nilResponse: Bool = false) -> Validator {
+	open static func isUUID(nilResponse: Bool = false) -> Validator {
 		return { (value: StringConvertible?) in
 			
 			guard let value = value?.string else { return nilResponse }
 
-            let uuid = NSUUID(UUIDString: value)
+            let uuid = UUID(uuidString: value)
             if let _ = uuid {
                 return true
             }
@@ -648,11 +648,11 @@ public class Validators {
     
     - returns: (StringConvertible)->Bool
     */
-	public static func isUppercase(nilResponse nilResponse: Bool = false) -> Validator {
+	open static func isUppercase(nilResponse: Bool = false) -> Validator {
 		return { (value: StringConvertible?) -> Bool in
 			
 			guard let value = value?.string else { return nilResponse }
-            return value == value.uppercaseString
+            return value == value.uppercased()
         }
     }
     
@@ -662,7 +662,7 @@ public class Validators {
     - parameter length: The max length
     - returns: (StringConvertible)->Bool
     */
-    public static func maxLength(length: Int, nilResponse: Bool = false) -> Validator {
+    open static func maxLength(_ length: Int, nilResponse: Bool = false) -> Validator {
         return {(value: StringConvertible?) -> Bool in
 	
 			guard let value = value?.string else { return nilResponse }
@@ -676,7 +676,7 @@ public class Validators {
     - parameter length: The min length
     - returns: (StringConvertible)->Bool
     */
-	public static func minLength(length: Int, nilResponse: Bool = false) -> Validator {
+	open static func minLength(_ length: Int, nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) -> Bool in
 			
 			guard let value = value?.string else { return nilResponse }
@@ -690,11 +690,11 @@ public class Validators {
 	- parameter pattern: The regex to check
 	- returns: (StringConvertible) -> Bool
 	*/
-	public static func regex(pattern: String, nilResponse: Bool = false) -> Validator {
+	open static func regex(_ pattern: String, nilResponse: Bool = false) -> Validator {
 		return { (value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
 			let regexText = NSPredicate(format: "SELF MATCHES %@", pattern)
-			return regexText.evaluateWithObject(value)
+			return regexText.evaluate(with: value)
 		}
 	}
 
@@ -705,7 +705,7 @@ public class Validators {
     - returns: (StringConvertible)->Bool
     */
 	
-	public static func required(nilResponse nilResponse: Bool = false) -> Validator {
+	open static func required(nilResponse: Bool = false) -> Validator {
 		return { (value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
 			return value != ""
@@ -720,27 +720,27 @@ public class Validators {
      - returns: (StringConvertible)->Bool
      */
 	
-	public static func watch(delegate: ValueProvider, nilResponse: Bool = false) -> Validator {
+	open static func watch(_ delegate: ValueProvider, nilResponse: Bool = false) -> Validator {
         return { (value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
             return value.string == delegate.value
         }
     }
 	
-    private static func removeSpaces(value: String) -> String {
+    fileprivate static func removeSpaces(_ value: String) -> String {
         return self.removeCharacter(value, char: " ")
     }
 
-    private static func removeDashes(value: String) -> String {
+    fileprivate static func removeDashes(_ value: String) -> String {
         return self.removeCharacter(value, char: "-")
     }
 
-    private static func removeUnderscores(value: String) -> String {
+    fileprivate static func removeUnderscores(_ value: String) -> String {
         return self.removeCharacter(value, char: "_")
     }
 
-    private static func removeCharacter(value: String, char: String) -> String {
-        return value.stringByReplacingOccurrencesOfString(char, withString: "")
+    fileprivate static func removeCharacter(_ value: String, char: String) -> String {
+        return value.replacingOccurrences(of: char, with: "")
     }
 }
 

@@ -715,7 +715,7 @@ class ValidatorSpec: QuickSpec {
 				validator: Validators.isUUID(),
 				valid: [
 					"33041937-05b2-464a-98ad-3910cbe0d09e",
-					NSUUID().UUIDString
+					UUID().uuidString
 				],
 				invalid: [
 					"3304193705b2464a98ad3910cbe0d09e",

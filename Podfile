@@ -5,7 +5,7 @@ target 'SwiftValidators' do
 end
 
 target 'SwiftValidatorsTests' do
-	pod 'Quick', '~> 0.9.0'
-	pod 'Nimble', '~> 3.2.0'
+	pod 'Quick', :git => 'https://github.com/Quick/Quick', :branch => 'swift-3.0'
+	pod 'Nimble', :git => 'https://github.com/Quick/Nimble'
 end
 
