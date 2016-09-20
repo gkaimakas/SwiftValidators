@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.0.0] - September 2016
+
+- Swift 3.0 support
+
 ## [4.0.2] - September 2016
 
 - Added a new validator: `isPostalCode`

@@ -270,10 +270,13 @@
 				TargetAttributes = {
 					131584C41B5FFCB60077E959 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 96LJ93WQBU;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					131584CF1B5FFCB60077E959 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 96LJ93WQBU;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -537,8 +540,9 @@
 			baseConfigurationReference = 8A1DCAAFA5A9A242CEBE6E77 /* Pods-SwiftValidators.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 96LJ93WQBU;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -560,8 +564,9 @@
 			baseConfigurationReference = 32F9F3E440D584332B673B49 /* Pods-SwiftValidators.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 96LJ93WQBU;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -582,6 +587,7 @@
 			baseConfigurationReference = 0BFE7D2607D4A55DC302BE68 /* Pods-SwiftValidatorsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 96LJ93WQBU;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -599,6 +605,7 @@
 			baseConfigurationReference = 5F12C8F44A0B081C221B029B /* Pods-SwiftValidatorsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 96LJ93WQBU;
 				INFOPLIST_FILE = SwiftValidatorsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gr.gkaimakas.$(PRODUCT_NAME:rfc1034identifier)";
