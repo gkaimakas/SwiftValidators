@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.1.0] - September 2016
+
+- Swift Package Manager support
+- iOS platform version 9.0
+- Moved a lot of things around
+
 ## [5.0.0] - September 2016
 
 - Swift 3.0 support

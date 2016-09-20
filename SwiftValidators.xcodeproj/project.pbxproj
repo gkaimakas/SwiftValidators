@@ -61,6 +61,7 @@
 		134270B31D5355A600F7DA76 /* ISBN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISBN.swift; sourceTree = "<group>"; };
 		134270B51D535F2A00F7DA76 /* Phone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		13459D7D1D001A1A00CEEA12 /* ValueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueProvider.swift; sourceTree = "<group>"; };
+		13CAAF4D1D916553004D6AB5 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftValidators.podspec; sourceTree = "<group>"; };
 		13E80BC91B6BB694001DFEA4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		13F2903B1CEDA1080081F851 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		131584BB1B5FFCB60077E959 = {
 			isa = PBXGroup;
 			children = (
+				13CAAF4D1D916553004D6AB5 /* Package.swift */,
 				13F2903B1CEDA1080081F851 /* CHANGELOG.md */,
 				13E80BC71B6BB64D001DFEA4 /* SwiftValidators.podspec */,
 				D73D62E7F646ACCD88ABA593 /* README.md */,
@@ -124,9 +126,13 @@
 		131584C71B5FFCB60077E959 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				13CAAF4F1D916818004D6AB5 /* Extensions */,
+				131584E11B5FFD7F0077E959 /* Validators.swift */,
+				13459D7D1D001A1A00CEEA12 /* ValueProvider.swift */,
+				1342709F1D5239E000F7DA76 /* StringConvertible.swift */,
 				131584CA1B5FFCB60077E959 /* SwiftValidators.h */,
+				13CAAF501D916855004D6AB5 /* Misc */,
 				131584C81B5FFCB60077E959 /* Supporting Files */,
-				13CAAF451D915B7D004D6AB5 /* Sources */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -157,7 +163,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		134270A91D527D1A00F7DA76 /* Extensions */ = {
+		13CAAF4F1D916818004D6AB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				134270AA1D527D7C00F7DA76 /* String.swift */,
@@ -168,29 +174,17 @@
 				134270A31D523D2E00F7DA76 /* NSString+StringConvertible.swift */,
 				134270A11D523CFD00F7DA76 /* String+StringConvertible.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
 			sourceTree = "<group>";
 		};
-		134270B21D53557E00F7DA76 /* Misc */ = {
+		13CAAF501D916855004D6AB5 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
 				134270B31D5355A600F7DA76 /* ISBN.swift */,
 				134270B51D535F2A00F7DA76 /* Phone.swift */,
 				B166F1EB1D86B32D0015E611 /* PostalCode.swift */,
 			);
-			path = Misc;
-			sourceTree = "<group>";
-		};
-		13CAAF451D915B7D004D6AB5 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				134270A91D527D1A00F7DA76 /* Extensions */,
-				134270B21D53557E00F7DA76 /* Misc */,
-				131584E11B5FFD7F0077E959 /* Validators.swift */,
-				13459D7D1D001A1A00CEEA12 /* ValueProvider.swift */,
-				1342709F1D5239E000F7DA76 /* StringConvertible.swift */,
-			);
-			path = Sources;
+			name = Misc;
 			sourceTree = "<group>";
 		};
 		49096A3BD1EDD96B5A32E5A9 /* Frameworks */ = {
