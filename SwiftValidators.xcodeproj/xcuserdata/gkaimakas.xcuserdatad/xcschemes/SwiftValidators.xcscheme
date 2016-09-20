@@ -20,20 +20,6 @@
                ReferencedContainer = "container:SwiftValidators.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "131584CF1B5FFCB60077E959"
-               BuildableName = "SwiftValidatorsTests.xctest"
-               BlueprintName = "SwiftValidatorsTests"
-               ReferencedContainer = "container:SwiftValidators.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

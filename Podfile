@@ -1,7 +1,8 @@
+
 use_frameworks!
 
-target 'SwiftValidators' do
 
+target 'SwiftValidators' do
 end
 
 target 'SwiftValidatorsTests' do
