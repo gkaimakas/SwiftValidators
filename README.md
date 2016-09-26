@@ -14,7 +14,7 @@ String validation for iOS developed in Swift. Inspired by [validator.js](https:/
 ### Installation
 
 
-SwiftValidators is available on CocoaPods under the name 'SwiftValidators'. To use in your project add on your Podfile
+SwiftValidators is available on CocoaPods for iOS 9.0+, Xcode 8 and Swift 3.0
 
 ````
 use_frameworks!
@@ -26,10 +26,19 @@ pod 'SwiftValidators'
 end
 ````
 
-When you want to use SwiftValidators on a class simply import the framework
+It is also available through SPM:
 
 ````
-import SwiftValidators
+import PackageDescription
+
+let package = Package(
+    name: "MyProject",
+    targets: [],
+    dependencies: [
+        .Package(url: "https://github.com/gkaimakas/SwiftValidators.git",
+                 majorVersion: 5)
+    ]
+)
 ````
 
 ### Walkthrough
