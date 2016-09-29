@@ -1,0 +1,4 @@
+language: objective-c
+xcode_workspace: SwiftValidators.xcworkspace
+xcode_scheme: SwiftValidators
+osx_image: xcode8
