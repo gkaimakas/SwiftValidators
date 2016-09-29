@@ -1,5 +1,5 @@
 language: objective-c
-xcode_workspace: SwiftValidators.xcworkspace
+xcode_project: SwiftValidators.xcproj
 xcode_scheme: SwiftValidators
 osx_image: xcode8
 install: pod install --repo-update
