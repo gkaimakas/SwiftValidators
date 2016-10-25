@@ -28,7 +28,7 @@ end
 
 It is also available through SPM:
 
-````
+```swift
 import PackageDescription
 
 let package = Package(
@@ -39,7 +39,7 @@ let package = Package(
                  majorVersion: 5)
     ]
 )
-````
+```
 
 ### Walkthrough
 #### Usage
@@ -51,7 +51,7 @@ A `Validator` accepts as an input a nullable value that conforms to the `StringC
 
 To specify the `validator`'s behaviour when it's input is nil, you can set the `nilResponse` parameters on a function of the `Validator`'s class. By default `nilResponse` is set to false for all available functions.
 
-````
+```swift
 Validators.exactLength(3)("abc") //returns true
 
 Validators.exactLength(3)(true) //returns false (the string representation of true is 'true')
@@ -59,24 +59,24 @@ Validators.exactLength(3)(true) //returns false (the string representation of tr
 Validators.exactLength(3)(nil) //returns false since `nilResponse` is set to false by default
 
 Valuidators.exactLength(3, nilResponse: true)(nil) //returns true since we set nilResponse to true
-````
+```
 
 For more examples on how to call each validator you can look at the [unit tests](https://github.com/gkaimakas/SwiftValidators/blob/master/SwiftValidatorsTests/ValidatorSpec.swift).
 
 #### Logical Operators
 
 You can combine operators using the logical `AND`, logical `OR` and Logical `NOT` operators ( &&,  || and ! respectively). 
-````
+```swift
 let combinedANDValidator = Validators.required() && Validator.isTrue()
-````
+```
 The `combinedANDValidator` will be `true` only when the value is not empty and `"true"`
-````
+```swift
 let combinedORValidator = Validators.isTrue() || Validators.isFalse()
-````
+```
 The `combinedORValidator` will be `true` if the value is `"true"` or `"false"`, otherwise it will be false.
-````
+```swift
 let reversedValidator = !Validators.isTrue()
-````
+```
 The `reversedValidator` will be `false` when the value equals `"true"` and `true` for all other values.
 
 
@@ -124,16 +124,16 @@ regex| checks that the value matches the regex from start to finish| func | Stri
 watch| check the delegate for equality | func | ValueProvider, Bool(nilReponse=false) | Validators.watch(delegate) 
 
 *FQDNOptions is a class that is used on isFQDN for configuration purposes. It can be instantiated like this: 
-````
+```swift
 FQDNOptions(requireTLD: Bool, allowUnderscores: Bool, allowTrailingDot: Bool)
-````
+```
 
 ### ValueProvider
 
 ValueProvider is a simple protocol that is used to get the string value of an object. For that purpose it exposes a getter 
-````
+```swift
 var value: String
-````
+```
 The watch validator accepts an object that conforms to that protocol.
 
 ### License MIT
