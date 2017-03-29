@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.1.2] - March 2017
+
+- Fixed a bug that caused valid FQDNs with a nmber in the to fail
+
 ## [5.1.0] - September 2016
 
 - Swift Package Manager support

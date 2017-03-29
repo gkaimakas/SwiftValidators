@@ -294,7 +294,10 @@ class ValidatorSpec: QuickSpec {
 					"a.domain.co",
 					"foo--bar.com",
 					"xn--froschgrn-x9a.com",
-					"rebecca.blackfriday"
+					"rebecca.blackfriday",
+					"www9.example.com",
+					"www1.exaple.com",
+					"w1w.example12.org"
 				],
 				invalid: [
 					"abc",

@@ -293,7 +293,7 @@ public class Validators {
 			guard let value = value?.string else { return nilResponse }
 
             var string = value
-            if (options.allowTrailingDot && string.lastCharacter == ".") {
+            if options.allowTrailingDot && string.lastCharacter == "." {
 				string = string.substring(with: string.characters.index(string.startIndex, offsetBy: 0) ..< string.characters.index(string.startIndex, offsetBy: string.length))
             }
 
@@ -310,18 +310,18 @@ public class Validators {
 
             for part in parts {
                 var _part = part
-                if (options.allowUnderscores) {
-                    if (self.regex("__")(_part)) {
-                        return false
-                    }
+                if options.allowUnderscores {
+                    _part = self.removeUnderscores(_part)
+//                    if (self.regex("__")(_part)) {
+//                        return false
+//                    }
                 }
-                _part = self.removeUnderscores(_part)
 
-                if (!self.regex("[a-z\u{00a1}-\u{ffff0}-9-]+")(_part)){
+                if !self.regex("[a-z\u{00a1}-\u{ffff0}0-9-]+")(_part) {
                     return false
                 }
 
-                if (_part[0] == "-" || _part.lastCharacter == "-" || self.regex("---")(_part)) {
+                if _part[0] == "-" || _part.lastCharacter == "-"  {
                     return false
                 }
             }
