@@ -65,15 +65,15 @@ For more examples on how to call each validator you can look at the [unit tests]
 
 You can combine operators using the logical `AND`, logical `OR` and Logical `NOT` operators ( &&,  || and ! respectively). 
 ```swift
-let combinedANDValidator = Validators.required() && Validator.isTrue()
+let combinedANDValidator = Validator.required() && Validator.isTrue()
 ```
 The `combinedANDValidator` will be `true` only when the value is not empty and `"true"`
 ```swift
-let combinedORValidator = Validators.isTrue() || Validators.isFalse()
+let combinedORValidator = Validator.isTrue() || Validators.isFalse()
 ```
 The `combinedORValidator` will be `true` if the value is `"true"` or `"false"`, otherwise it will be false.
 ```swift
-let reversedValidator = !Validators.isTrue()
+let reversedValidator = !Validator.isTrue()
 ```
 The `reversedValidator` will be `false` when the value equals `"true"` and `true` for all other values.
 
