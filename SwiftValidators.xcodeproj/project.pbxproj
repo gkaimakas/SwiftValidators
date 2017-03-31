@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1314B09C1E8E813D00DFC21C /* FQDNOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314B09B1E8E813D00DFC21C /* FQDNOptions.swift */; };
+		1314B09E1E8E818300DFC21C /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314B09D1E8E818300DFC21C /* Regex.swift */; };
 		131584CB1B5FFCB60077E959 /* SwiftValidators.h in Headers */ = {isa = PBXBuildFile; fileRef = 131584CA1B5FFCB60077E959 /* SwiftValidators.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		131584D11B5FFCB60077E959 /* SwiftValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131584C51B5FFCB60077E959 /* SwiftValidators.framework */; };
-		131584E21B5FFD7F0077E959 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131584E11B5FFD7F0077E959 /* Validators.swift */; };
+		131584E21B5FFD7F0077E959 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131584E11B5FFD7F0077E959 /* Validator.swift */; };
 		134270A01D5239E000F7DA76 /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342709F1D5239E000F7DA76 /* StringConvertible.swift */; };
 		134270A21D523CFD00F7DA76 /* String+StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134270A11D523CFD00F7DA76 /* String+StringConvertible.swift */; };
 		134270A41D523D2E00F7DA76 /* NSString+StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134270A31D523D2E00F7DA76 /* NSString+StringConvertible.swift */; };
@@ -43,12 +45,14 @@
 
 /* Begin PBXFileReference section */
 		0BFE7D2607D4A55DC302BE68 /* Pods-SwiftValidatorsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidatorsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftValidatorsTests/Pods-SwiftValidatorsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1314B09B1E8E813D00DFC21C /* FQDNOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FQDNOptions.swift; sourceTree = "<group>"; };
+		1314B09D1E8E818300DFC21C /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		131584C51B5FFCB60077E959 /* SwiftValidators.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftValidators.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		131584C91B5FFCB60077E959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		131584CA1B5FFCB60077E959 /* SwiftValidators.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidators.h; sourceTree = "<group>"; };
 		131584D01B5FFCB60077E959 /* SwiftValidatorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftValidatorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		131584D61B5FFCB60077E959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		131584E11B5FFD7F0077E959 /* Validators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		131584E11B5FFD7F0077E959 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		1342709F1D5239E000F7DA76 /* StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConvertible.swift; sourceTree = "<group>"; };
 		134270A11D523CFD00F7DA76 /* String+StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+StringConvertible.swift"; sourceTree = "<group>"; };
 		134270A31D523D2E00F7DA76 /* NSString+StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+StringConvertible.swift"; sourceTree = "<group>"; };
@@ -127,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				13CAAF4F1D916818004D6AB5 /* Extensions */,
-				131584E11B5FFD7F0077E959 /* Validators.swift */,
+				131584E11B5FFD7F0077E959 /* Validator.swift */,
 				13459D7D1D001A1A00CEEA12 /* ValueProvider.swift */,
 				1342709F1D5239E000F7DA76 /* StringConvertible.swift */,
 				131584CA1B5FFCB60077E959 /* SwiftValidators.h */,
@@ -183,6 +187,8 @@
 				134270B31D5355A600F7DA76 /* ISBN.swift */,
 				134270B51D535F2A00F7DA76 /* Phone.swift */,
 				B166F1EB1D86B32D0015E611 /* PostalCode.swift */,
+				1314B09B1E8E813D00DFC21C /* FQDNOptions.swift */,
+				1314B09D1E8E818300DFC21C /* Regex.swift */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -409,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				134270A61D52422200F7DA76 /* Bool+StringConvertible.swift in Sources */,
-				131584E21B5FFD7F0077E959 /* Validators.swift in Sources */,
+				131584E21B5FFD7F0077E959 /* Validator.swift in Sources */,
 				134270A21D523CFD00F7DA76 /* String+StringConvertible.swift in Sources */,
 				134270AD1D527DA900F7DA76 /* Double+StringConvertible.swift in Sources */,
 				134270B61D535F2A00F7DA76 /* Phone.swift in Sources */,
@@ -419,8 +425,10 @@
 				13459D7E1D001A1A00CEEA12 /* ValueProvider.swift in Sources */,
 				134270A81D5242AA00F7DA76 /* Float+StringConvertible.swift in Sources */,
 				134270AF1D52831E00F7DA76 /* Int+StringConvertible.swift in Sources */,
+				1314B09E1E8E818300DFC21C /* Regex.swift in Sources */,
 				B166F1EC1D86B32D0015E611 /* PostalCode.swift in Sources */,
 				134270A01D5239E000F7DA76 /* StringConvertible.swift in Sources */,
+				1314B09C1E8E813D00DFC21C /* FQDNOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

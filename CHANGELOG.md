@@ -1,6 +1,14 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.0.0] - March 2017
+
+- Breaking changes throught
+- Validators is no more
+- Closures are wrapped in a Validator class
+- To validate a value one must call apply on the Validator instance
+- Moved many things around
+
 ## [5.1.2] - March 2017
 
 - Fixed a bug that caused valid FQDNs with a nmber in the to fail

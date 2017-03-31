@@ -1,6 +1,6 @@
 //
-//  ValidatorSpec_v2.swift
-//  SwiftValidators
+//  Validatorpec_v2.swift
+//  SwiftValidator
 //
 //  Created by Γιώργος Καϊμακάς on 04/08/16.
 //  Copyright © 2016 Γιώργος Καϊμακάς. All rights reserved.
@@ -25,8 +25,8 @@ class ValidatorSpec: QuickSpec {
 		
 		let testCases: [TestCase] = [
 			TestCase(name: "Logical AND",
-				message: "should validate that validators can be combined using logical AND",
-				validator: Validators.required() && Validators.isTrue(),
+				message: "should validate that Validator can be combined using logical AND",
+				validator: Validator.required() && Validator.isTrue(),
 				valid: [
 					true,
 					"true"
@@ -39,8 +39,8 @@ class ValidatorSpec: QuickSpec {
 			),
 			
 			TestCase(name: "Logical OR",
-				message: "should validate that validators can be combined using logical OR",
-				validator: Validators.isFalse() || Validators.isTrue(),
+				message: "should validate that Validator can be combined using logical OR",
+				validator: Validator.isFalse() || Validator.isTrue(),
 				valid: [
 					true,
 					"true",
@@ -57,7 +57,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "Logical NOT",
 				message: "should reverse the operand's result",
-				validator: !Validators.isTrue(),
+				validator: !Validator.isTrue(),
 				valid: [
 					false,
 					"false",
@@ -71,7 +71,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "contains",
 				message: "should validate if the value contains the string",
-				validator: Validators.contains("some_string"),
+				validator: Validator.contains("some_string"),
 				valid: [
 					"some_string_asfa",
 					"dfsgfsf_Asdafda_some_string"
@@ -83,7 +83,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "equals",
 				message: "should validate if the value is equal",
-				validator: Validators.equals("some_string"),
+				validator: Validator.equals("some_string"),
 				valid: [
 					"some_string"
 				],
@@ -95,7 +95,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "exactLength",
 				message: "should validate if the value has the exact length",
-				validator: Validators.exactLength(5),
+				validator: Validator.exactLength(5),
 				valid: [
 					"12345",
 					"abcde",
@@ -110,7 +110,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isASCII", message:
 				"should validate if the value contains only ASCII charactes",
-				validator: Validators.isASCII(),
+				validator: Validator.isASCII(),
 				valid: [
 					"foobar",
 					"0987654321",
@@ -127,7 +127,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isAfter",
 				message: "should validate if the value is after the date",
-				validator: Validators.isAfter("25/09/1987"),
+				validator: Validator.isAfter("25/09/1987"),
 				valid: [
 					"28/03/1994",
 					"29/03/1994"
@@ -139,7 +139,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isAlpha",
 				message: "should validate if the value contains only letters",
-				validator: Validators.isAlpha(),
+				validator: Validator.isAlpha(),
 				valid: [
 					"asdsdgdfhdfASFSDGDFHFG"
 				],
@@ -152,7 +152,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isAlphanumeric",
 				message: "should validate if the value contains only alphanumeric characters",
-				validator: Validators.isAlphanumeric(),
+				validator: Validator.isAlphanumeric(),
 				valid: [
 					"abc123",
 					"ABC11"
@@ -165,7 +165,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isBase64",
 				message: "should validate that the value is a base64 encoded string",
-				validator: Validators.isBase64(),
+				validator: Validator.isBase64(),
 				valid: [
 					"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4=",
 					"Vml2YW11cyBmZXJtZW50dW0gc2VtcGVyIHBvcnRhLg==",
@@ -187,7 +187,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isBefore",
 				message: "should validate if the value is before the date",
-				validator: Validators.isBefore("29/03/1994"),
+				validator: Validator.isBefore("29/03/1994"),
 				valid: [
 					"04/10/1992",
 					"25/09/1987"
@@ -198,7 +198,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isBool",
 				message: "should validate if the value is true or false",
-				validator: Validators.isBool(),
+				validator: Validator.isBool(),
 				valid: [
 					false,
 					true,
@@ -218,7 +218,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isCreditCard",
 				message: "should validate credit cards",
-				validator: Validators.isCreditCard(),
+				validator: Validator.isCreditCard(),
 				valid: [
 					"375556917985515",
 					"36050234196908",
@@ -237,7 +237,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isDate",
 				message: "should validate dates",
-				validator: Validators.isDate(),
+				validator: Validator.isDate(),
 				valid: [
 					"25/09/1987",
 					"01/01/2000",
@@ -251,7 +251,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isEmail",
 				message: "should validate emails",
-				validator: Validators.isEmail(),
+				validator: Validator.isEmail(),
 				valid: [
 					"gkaimakas@gmail.com",
 					"foo@bar.com",
@@ -276,7 +276,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isEmpty",
 				message: "should validate empty strings",
-				validator: Validators.isEmpty(),
+				validator: Validator.isEmpty(),
 				valid: [
 					""
 				],
@@ -287,7 +287,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isFQDN",
 				message: "should validate FQDN strings",
-				validator: Validators.isFQDN(),
+				validator: Validator.isFQDN(),
 				valid: [
 					"domain.com",
 					"dom.plato",
@@ -312,7 +312,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isFloat",
 				message: "should validate floats",
-				validator: Validators.isFloat(),
+				validator: Validator.isFloat(),
 				valid: [
 					"1.2",
 					(1.2 as Float),
@@ -339,7 +339,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isHexadecimal",
 				message: "should validate hexadecimals",
-				validator: Validators.isHexadecimal(),
+				validator: Validator.isHexadecimal(),
 				valid: [
 					"deadBEEF",
 					"ff0044"
@@ -353,7 +353,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isHexColor",
 				message: "should validate hex colors",
-				validator:  Validators.isHexColor(),
+				validator:  Validator.isHexColor(),
 				valid: [
 					"#ff0034",
 					"#CCCCCC",
@@ -370,7 +370,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isIP",
 				message: "should validate IPs",
-				validator: Validators.isIP(),
+				validator: Validator.isIP(),
 				valid: [
 					"::1",
 					"2001:db8:0000:1:1:1:1:1",
@@ -409,7 +409,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isIPv4",
 				message: "should validate IPv4 addresses",
-				validator: Validators.isIPv4(),
+				validator: Validator.isIPv4(),
 				valid: [
 					"192.123.23.0"
 				],
@@ -420,7 +420,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isIPv6",
 				message: "should validate IPv6 addresses",
-				validator: Validators.isIPv6(),
+				validator: Validator.isIPv6(),
 				valid: [
 					"::1",
 					"2001:db8:0000:1:1:1:1:1",
@@ -458,7 +458,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isISBN(10)",
 				message: "should validate ISBNs v 10",
-				validator: Validators.isISBN(.v10),
+				validator: Validator.isISBN(.v10),
 				valid: [
 					"3836221195",
 					"1617290858",
@@ -489,7 +489,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isISBN(13)",
 				message: "should validate ISBNS v13",
-				validator: Validators.isISBN(.v13),
+				validator: Validator.isISBN(.v13),
 				valid: [
 					"9783836221191",
 					"978-3-8362-2119-1",
@@ -510,7 +510,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isIn",
 				message: "should validate that the value exists in the array",
-				validator: Validators.isIn(["one", "two", "three"]),
+				validator: Validator.isIn(["one", "two", "three"]),
 				valid: [
 					"one",
 					"two",
@@ -526,7 +526,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isInt",
 				message: "should validate ints",
-				validator: Validators.isInt(),
+				validator: Validator.isInt(),
 				valid: [
 					1,
 					2,
@@ -543,7 +543,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isLowercase",
 				message: "should validate lowercase strings",
-				validator: Validators.isLowercase(),
+				validator: Validator.isLowercase(),
 				valid: [
 					"aaaaaa a a aa  aa"
 				]
@@ -555,7 +555,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isMongoId",
 				message: "should validate hexadecimal mongo ids",
-				validator: Validators.isMongoId(),
+				validator: Validator.isMongoId(),
 				valid: [
 					"507f1f77bcf86cd799439011"
 				],
@@ -567,7 +567,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isNumeric",
 				message: "should validate numeric values",
-				validator: Validators.isNumeric(),
+				validator: Validator.isNumeric(),
 				valid: [
 					123,
 					00123,
@@ -583,7 +583,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isPhone_el_GR",
 				message: "should validate phone numbers from Greece",
-				validator: Validators.isPhone(.el_GR),
+				validator: Validator.isPhone(.el_GR),
 				valid: [
 					"2101231231",
 					"6944848966",
@@ -598,7 +598,7 @@ class ValidatorSpec: QuickSpec {
 
 			TestCase(name: "isPhone_nl_BE",
         message: "should validate phone numbers from Belgium",
-        validator: Validators.isPhone(.nl_BE),
+        validator: Validator.isPhone(.nl_BE),
         valid: [
           "0123456789",
           "0032123456789",
@@ -614,7 +614,7 @@ class ValidatorSpec: QuickSpec {
 
 			TestCase(name: "isPhone_nl_BE_mobile",
         message: "should validate phone numbers from Belgian mobile phones",
-        validator: Validators.isPhone(.nl_BE_mobile),
+        validator: Validator.isPhone(.nl_BE_mobile),
         valid: [
           "04123456789",
           "00324123456789",
@@ -630,7 +630,7 @@ class ValidatorSpec: QuickSpec {
 
 			TestCase(name: "isPhone_nl_NL",
         message: "should validate phone numbers from The Netherlands",
-        validator: Validators.isPhone(.nl_NL),
+        validator: Validator.isPhone(.nl_NL),
         valid: [
           "0123456789",
           "0031123456789",
@@ -645,7 +645,7 @@ class ValidatorSpec: QuickSpec {
 
       TestCase(name: "isPostalCode_BE",
         message: "should validate Belgian postal codes",
-        validator: Validators.isPostalCode(.BE),
+        validator: Validator.isPostalCode(.BE),
         valid: [
           "1000",
           "9999"
@@ -659,7 +659,7 @@ class ValidatorSpec: QuickSpec {
 
       TestCase(name: "isPostalCode_GB",
         message: "should validate British postal codes",
-        validator: Validators.isPostalCode(.GB),
+        validator: Validator.isPostalCode(.GB),
         valid: [
           "B45 0HY",
           "CV32 7NG",
@@ -674,7 +674,7 @@ class ValidatorSpec: QuickSpec {
 
 			TestCase(name: "isPostalCode_NL",
         message: "should validate Dutch postal codes",
-        validator: Validators.isPostalCode(.NL),
+        validator: Validator.isPostalCode(.NL),
         valid: [
           "5171KW",
           "1234 AB"
@@ -688,7 +688,7 @@ class ValidatorSpec: QuickSpec {
 
 			TestCase(name: "isPostalCode_US",
         message: "should validate United-States postal codes",
-        validator: Validators.isPostalCode(.US),
+        validator: Validator.isPostalCode(.US),
         valid: [
           "90201"
         ],
@@ -702,7 +702,7 @@ class ValidatorSpec: QuickSpec {
 
 			TestCase(name: "isTrue",
 				message: "should validate true",
-				validator: Validators.isTrue(),
+				validator: Validator.isTrue(),
 				valid: [
 					true,
 					"true"
@@ -715,7 +715,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isUUID",
 				message: "should validate UUIDs",
-				validator: Validators.isUUID(),
+				validator: Validator.isUUID(),
 				valid: [
 					"33041937-05b2-464a-98ad-3910cbe0d09e",
 					UUID().uuidString
@@ -728,7 +728,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "isUppercase",
 				message: "should validate uppercase values",
-				validator: Validators.isUppercase(),
+				validator: Validator.isUppercase(),
 				valid: [
 					"AAAAAAA"
 				],
@@ -739,7 +739,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "maxLength",
 				message: "should validate values that do not exceed the max length",
-				validator: Validators.maxLength(5),
+				validator: Validator.maxLength(5),
 				valid: [
 					1,
 					12,
@@ -756,7 +756,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "minLength",
 				message: "should validate values that exceed the min length",
-				validator: Validators.minLength(2),
+				validator: Validator.minLength(2),
 				valid: [
 					12,
 					1234,
@@ -771,7 +771,7 @@ class ValidatorSpec: QuickSpec {
 			
 			TestCase(name: "required",
 				message: "should validate values that are not empty",
-				validator: Validators.required(),
+				validator: Validator.required(),
 				valid: [
 					" ",
 					1234
@@ -787,10 +787,10 @@ class ValidatorSpec: QuickSpec {
 			describe(testCase.name) {
 				it(testCase.message) {
 					for value in testCase.valid {
-						expect(testCase.validator(value)).to(equal(true))
+						expect(testCase.validator.apply(value)).to(equal(true))
 					}
 					for value in testCase.invalid {
-						expect(testCase.validator(value)).to(equal(false))
+						expect(testCase.validator.apply(value)).to(equal(false))
 					}
 				}
 			}
