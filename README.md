@@ -9,6 +9,10 @@ String validation for iOS developed in Swift.
 + [Available validators](#supported-functions)
 + [License](#license-mit)
 
+### ReactiveSwift + SwiftValidators
+
+Want to use `SwiftValidators` with `ReactiveSwift`? [`SwiftValidatorsReactiveExtensions`](https://github.com/gkaimakas/SwiftValidatorsReactiveExtensions) provides a set of extensions that play well with `ValidatingProperty`.
+
 ### Installation
 
 
@@ -60,10 +64,6 @@ Valuidator.exactLength(3, nilResponse: true).apply(nil) //returns true since we 
 ```
 
 For more examples on how to call each validator you can look at the [unit tests](https://github.com/gkaimakas/SwiftValidators/blob/master/SwiftValidatorsTests/ValidatorSpec.swift).
-
-#### ReactiveSwift + SwiftValidators
-
-Want to use `SwiftValidators` with `ReactiveSwift`? [`SwiftValidatorsReactiveExtensions`](https://github.com/gkaimakas/SwiftValidatorsReactiveExtensions) provides a set of extensions that play well with `ValidatingProperty`.
 
 #### Logical Operators
 
