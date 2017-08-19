@@ -6,7 +6,7 @@ String validation for iOS developed in Swift.
 + [Installation](#installation)
 + [Walkthrough](#walkthrough)
 + [Usage](#usage)
-+ [Available validators](#supported-functions)
++ [Available validators](#available-validators)
 + [License](#license-mit)
 
 ### ReactiveSwift + SwiftValidators
