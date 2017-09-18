@@ -262,7 +262,10 @@ class ValidatorSpec: QuickSpec {
 					"test|123@m端ller.com",
 					"test+ext@gmail.com",
 					"some.name.midd.leNa.me.+extension@GoogleMail.com",
-					"gmail...ignores...dots...@gmail.com"
+					"gmail...ignores...dots...@gmail.com",
+					"name@domain.apartments",
+					"name@domain.accountants",
+					"name@domain.associates"
 				],
 				invalid: [
 					"tester",
