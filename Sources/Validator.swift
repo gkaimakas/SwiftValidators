@@ -251,7 +251,10 @@ public class Validator {
 
             var string = value
             if options.allowTrailingDot && string.lastCharacter == "." {
-				string = string.substring(with: string.characters.index(string.startIndex, offsetBy: 0) ..< string.characters.index(string.startIndex, offsetBy: string.length))
+//				string = string.substring(with: string.characters.index(string.startIndex, offsetBy: 0) ..< string.characters.index(string.startIndex, offsetBy: string.length))
+
+				let _subscript = string[string.startIndex..<string.index(string.startIndex, offsetBy: string.length)]
+				string = String(_subscript)
             }
 
             var parts = string.characters.split(omittingEmptySubsequences: false) {
@@ -385,13 +388,14 @@ public class Validator {
                 return false
             }
 
+
             if (string == "::") {
                 return true
-            } else if (string.substring(to: string.characters.index(string.startIndex, offsetBy: 2)) == "::") {
+            } else if (String(string[string.startIndex..<string.index(string.startIndex, offsetBy: 2)]) == "::") {
                 blocks.remove(at: 0)
                 blocks.remove(at: 0)
                 foundOmissionBlock = true
-            } else if (String(Array(string.characters.reversed())).substring(to: string.characters.index(string.startIndex, offsetBy: 2)) == "::") {
+            } else if (String(String(string.reversed())[string.startIndex..<string.index(string.startIndex, offsetBy: 2)]) == "::") {
                 blocks.removeLast()
                 blocks.removeLast()
                 foundOmissionBlock = true
