@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.0.0] - October 2017
+- Added support for Swift 4.
+
 ## [6.0.1] - September 2017
 
 - Added support for arbitrary length of email domain extensions (previously is was 2-6 characters)
