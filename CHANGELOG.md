@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.0.2] November 2017
+- Removed some warnings
+
 ## [7.0.0] - October 2017
 - Added support for Swift 4.
 
