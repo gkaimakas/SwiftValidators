@@ -10,15 +10,7 @@ import Foundation
 
 internal extension String {
 	
-	internal subscript (i: Int) -> String{
-		return "\(self[self.characters.index(self.startIndex, offsetBy: i)])"
-	}
-	
-	internal var length: Int {
-		return self.characters.count
-	}
-	
-	internal var lastCharacter: String {
-		return self[self.length - 1]
-	}
+    internal subscript (i: Int) -> String{
+        return "\(self[self.index(self.startIndex, offsetBy: i)])"
+    }
 }
