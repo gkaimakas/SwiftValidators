@@ -64,7 +64,7 @@ public class Validator {
 	public static func exactLength(_ length: Int, nilResponse: Bool = false) -> Validator {
         return Validator { (value: StringConvertible?) -> Bool in
 			guard let value = value?.string else { return nilResponse }
-            return value.characters.count == length ? true : false
+            return value.count == length ? true : false
         }
     }
     
@@ -250,14 +250,14 @@ public class Validator {
 			guard let value = value?.string else { return nilResponse }
 
             var string = value
-            if options.allowTrailingDot && string.lastCharacter == "." {
+            if options.allowTrailingDot && string.last == Character(".") {
 //				string = string.substring(with: string.characters.index(string.startIndex, offsetBy: 0) ..< string.characters.index(string.startIndex, offsetBy: string.length))
 
-				let _subscript = string[string.startIndex..<string.index(string.startIndex, offsetBy: string.length)]
+				let _subscript = string[string.startIndex..<string.index(string.startIndex, offsetBy: string.count)]
 				string = String(_subscript)
             }
 
-            var parts = string.characters.split(omittingEmptySubsequences: false) {
+            var parts = string.split(omittingEmptySubsequences: false) {
                 $0 == "."
             }.map { String($0) }
 
@@ -278,7 +278,7 @@ public class Validator {
                     return false
                 }
 
-                if _part[0] == "-" || _part.lastCharacter == "-"  {
+                if _part[0] == "-" || _part.last == Character("-")  {
                     return false
                 }
             }
@@ -370,7 +370,7 @@ public class Validator {
         return Validator { (value: StringConvertible?) in
 			guard let value = value?.string else { return nilResponse }
             let string: String = self.removeDashes(self.removeSpaces(value))
-            var blocks = string.characters.split(omittingEmptySubsequences: false) {
+            var blocks = string.split(omittingEmptySubsequences: false) {
                 $0 == ":"
             }.map { String($0) }
 
@@ -443,13 +443,13 @@ public class Validator {
             if (version.rawValue == "10") {
 
                 for i in 0 ..< 9 {
-                    checkSum += (i + 1) * Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: i)])")!
+                    checkSum += (i + 1) * Int("\(sanitized[sanitized.index(sanitized.startIndex, offsetBy: i)])")!
                 }
 
-                if ("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: 9)])".lowercased() == "x") {
+                if ("\(sanitized[sanitized.index(sanitized.startIndex, offsetBy: 9)])".lowercased() == "x") {
                     checkSum += 10 * 10
                 } else {
-                    checkSum += 10 * Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: 9)])")!
+                    checkSum += 10 * Int("\(sanitized[sanitized.index(sanitized.startIndex, offsetBy: 9)])")!
                 }
 
                 if (checkSum % 11 == 0) {
@@ -459,11 +459,11 @@ public class Validator {
             } else if (version.rawValue == "13") {
                 var factor = [1, 3]
                 for i in 0 ..< 12 {
-                    let charAt: Int = Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: i)])")!
+                    let charAt: Int = Int("\(sanitized[sanitized.index(sanitized.startIndex, offsetBy: i)])")!
                     checkSum += factor[i % 2] * charAt
                 }
 
-                let charAt12 = Int("\(sanitized[sanitized.characters.index(sanitized.startIndex, offsetBy: 12)])")!
+                let charAt12 = Int("\(sanitized[sanitized.index(sanitized.startIndex, offsetBy: 12)])")!
                 if ((charAt12 - ((10 - (checkSum % 10)) % 10)) == 0) {
                     return true
                 }
@@ -618,7 +618,7 @@ public class Validator {
         return Validator {(value: StringConvertible?) -> Bool in
 	
 			guard let value = value?.string else { return nilResponse }
-            return value.characters.count <= length ? true : false
+            return value.count <= length ? true : false
         }
     }
     
@@ -632,7 +632,7 @@ public class Validator {
         return Validator { (value: StringConvertible?) -> Bool in
 			
 			guard let value = value?.string else { return nilResponse }
-            return value.characters.count >= length ? true : false
+            return value.count >= length ? true : false
         }
     }
 	
