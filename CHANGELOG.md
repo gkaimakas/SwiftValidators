@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.0.3] December 2017
+- Fixed a bug with Xcode's 9 build system by ab-rdarts
+
 ## [7.0.2] November 2017
 - Removed some warnings
 
