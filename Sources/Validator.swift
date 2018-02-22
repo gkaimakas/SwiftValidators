@@ -574,6 +574,30 @@ public class Validator {
             return value.lowercased() == String(true)
         }
     }
+    
+    public static func isURL(nilResponse: Bool = false) -> Validator {
+        // https://stackoverflow.com/questions/28079123/how-to-check-validity-of-url-in-swift
+        
+        return Validator { (value: StringConvertible?) -> Bool in
+            guard let value = value?.string else { return nilResponse }
+            
+            let types: NSTextCheckingResult.CheckingType = [.link]
+            
+            guard let detector = try? NSDataDetector(types: types.rawValue) else { return nilResponse }
+            
+            if value.count == 0 {
+                return nilResponse
+            }
+            
+            if detector.numberOfMatches(in: value,
+                                        options: NSRegularExpression.MatchingOptions(rawValue: 0),
+                                        range: NSMakeRange(0, value.count)) > 0 {
+                return true
+            }
+            
+            return false
+        }
+    }
 
     /**
     Checks if it is a valid UUID
