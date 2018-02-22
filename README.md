@@ -117,6 +117,7 @@ isNumeric|checks if it is numeric|func|Bool(nilReponse=false)|Validator.isNumeri
 isPhone|checks if it is a valid phone | func| Phone, Bool(nilReponse=false) | Validator.isPhone(.el_GR).apply("6944848966")
 isPostalCode| checks it is a valid postal code | func | PostalCode, Bool(nilResponse=false) | Validator.isPostalCode(.GR).apply("30 006")
 isTrue|checks if it is true|func|Bool(nilReponse=false)|Validator.isTrue().apply("true")
+isURL|checks if it is a valid URL| func|Bool(nilReponse=false)|Validator.isURL().apply("http://www.google.com")
 isUUID|checks if it is a valid UUID| func|Bool(nilReponse=false)|Validator.isUUID().apply("243-124245-2235-123")
 isUppercase|checks if has only uppercase letter|func|Bool(nilReponse=false)|Validator.isUppercase().apply("ABC")
 maxLength|checks if the length does not exceed the max length|func|Int, Bool(nilReponse=false)|Validator.maxLength(2).apply("ab")

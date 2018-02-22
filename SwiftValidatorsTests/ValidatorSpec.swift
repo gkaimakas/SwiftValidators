@@ -716,6 +716,20 @@ class ValidatorSpec: QuickSpec {
 				]
 			),
 			
+            TestCase(name: "isURL",
+                 message: "should validate URLs",
+                 validator: Validator.isURL(),
+                 valid: [
+                    "http://www.google.com",
+                    "www.google.com",
+                    "google.com",
+                 ],
+                 invalid: [
+                    "text",
+                    "http://"
+                 ]
+            ),
+            
 			TestCase(name: "isUUID",
 				message: "should validate UUIDs",
 				validator: Validator.isUUID(),
