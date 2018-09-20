@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [8.0.0] September 2018
+- added more test cases
+- added support for swift 4.2
+
 ## [7.0.3] December 2017
 - Fixed a bug with Xcode's 9 build system by ab-rdarts
 

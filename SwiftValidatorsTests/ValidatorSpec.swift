@@ -146,7 +146,8 @@ class ValidatorSpec: QuickSpec {
 				invalid: [
 					"3304193705b2464a98ad3910cbe0d09e",
 					"123",
-					nil
+                    nil,
+                    "asdfd464342ghj"
 				]
 			),
 			
@@ -155,7 +156,8 @@ class ValidatorSpec: QuickSpec {
 				validator: Validator.isAlphanumeric(),
 				valid: [
 					"abc123",
-					"ABC11"
+					"ABC11",
+                    "asdfd464342ghj"
 				],
 				invalid: [
 					"foo!!",
