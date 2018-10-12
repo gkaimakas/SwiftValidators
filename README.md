@@ -15,6 +15,7 @@ Want to use `SwiftValidators` with `ReactiveSwift`? [`SwiftValidatorsReactiveExt
 
 ### Installation
 
+#### Cocoapods
 
 SwiftValidators is available on CocoaPods for iOS 9.0+, Xcode 8 and Swift 3.0
 
@@ -28,6 +29,13 @@ pod 'SwiftValidators'
 end
 ````
 
+#### Carthage
+
+```
+github "gkaimakas/SwiftValidators"
+```
+
+#### Swift package manager
 It is also available through SPM:
 
 ```swift
