@@ -1,0 +1,6 @@
+framework module Pods_SwiftValidators {
+  umbrella header "Pods-SwiftValidators-umbrella.h"
+
+  export *
+  module * { export * }
+}
