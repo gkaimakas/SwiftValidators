@@ -485,7 +485,7 @@ public class Validator {
 			guard let value = value?.string else { return nilResponse }
 			
 			return array
-				.index(of: value) != nil
+				.firstIndex(of: value) != nil
         }
     }
 
