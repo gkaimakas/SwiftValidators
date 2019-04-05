@@ -1,0 +1,23 @@
+language: objective-c
+osx_image: xcode10.2
+xcode_sdk: iphonesimulator12.2
+xcode_project: SwiftValidators.xcodeproj
+xcode_scheme: SwiftValidators
+
+env:
+  #environment variables
+  global:
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    - PROJECT_NAME="SwiftValidators.xcodeproj"
+    - SCHEME_IOS="SwiftValidators"
+    - IOS_SDK=iphonesimulator12.2
+  matrix:
+    - DESTINATION="OS=12.2,name=iPhone X" SCHEME="$SCHEME_IOS" SDK="$IOS_SDK"
+
+before_install:
+  - brew install carthage
+  - carthage bootstrap --platform iOS
+
+script:
+  - xcodebuild test -project "$PROJECT_NAME" -scheme "$SCHEME" -destination "$DESTINATION" -sdk "$SDK" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO

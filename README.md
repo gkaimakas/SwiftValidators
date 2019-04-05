@@ -1,5 +1,7 @@
 # Swift Validators :large_orange_diamond:
 
+[![Build Status](https://travis-ci.org/vdeep/SwiftValidator.svg?branch=master)](https://travis-ci.org/vdeep/SwiftValidators)
+
 String validation for iOS developed in Swift.
 
 ## Contents
