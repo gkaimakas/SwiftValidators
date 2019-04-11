@@ -9,8 +9,8 @@
 import Foundation
 
 internal extension String {
-	
-    internal subscript (i: Int) -> String{
+
+    subscript (i: Int) -> String{
         return "\(self[self.index(self.startIndex, offsetBy: i)])"
     }
 }
