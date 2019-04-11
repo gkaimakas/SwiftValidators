@@ -1,7 +1,7 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [9.0.0] April 2019
+## [9.0.1] April 2019
 - added support for swift 5.0
 
 ## [8.0.0] September 2018
