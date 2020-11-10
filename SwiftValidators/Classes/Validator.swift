@@ -456,7 +456,7 @@ public class Validator {
                 }
                 
             } else if (version.rawValue == "13") {
-                var factor = [1, 3]
+                let factor = [1, 3]
                 for i in 0 ..< 12 {
                     let charAt: Int = Int("\(sanitized[sanitized.index(sanitized.startIndex, offsetBy: i)])")!
                     checkSum += factor[i % 2] * charAt
