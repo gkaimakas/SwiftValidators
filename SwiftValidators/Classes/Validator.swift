@@ -558,7 +558,7 @@ public class Validator {
      - returns (String)->Bool
      */
     public static func isPostalCode(_ countryCode: PostalCode, nilResponse: Bool = false) -> Validator {
-        return regex(countryCode.rawValue, nilResponse: nilResponse)
+        return regex(countryCode.regex, nilResponse: nilResponse)
     }
     
     /**
