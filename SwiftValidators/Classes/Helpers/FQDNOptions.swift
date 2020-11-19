@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class FQDNOptions {
+public struct FQDNOptions {
     public static let defaultOptions: FQDNOptions = FQDNOptions(requireTLD: true, allowUnderscores: false, allowTrailingDot: false)
     
     public let requireTLD: Bool
