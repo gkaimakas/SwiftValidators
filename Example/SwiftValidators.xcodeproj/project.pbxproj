@@ -48,7 +48,7 @@
 		B2872BEDDFE96EDB914CC3A5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BCFB2E78A057211FD827FA98 /* Pods-SwiftValidators_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftValidators_Example.debug.xcconfig"; path = "Target Support Files/Pods-SwiftValidators_Example/Pods-SwiftValidators_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C5BEEE527BD15133BD7BE586 /* Pods_SwiftValidators_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidators_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBED96769FB7593B97DFE721 /* SwiftValidators.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftValidators.podspec; path = ../SwiftValidators.podspec; sourceTree = "<group>"; };
+		DBED96769FB7593B97DFE721 /* SwiftValidators.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftValidators.podspec; path = ../SwiftValidators.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E83E6E3F278D96F2239BF3B3 /* Pods_SwiftValidators_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftValidators_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
