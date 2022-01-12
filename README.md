@@ -60,7 +60,7 @@ Validator.exactLength(3).apply(true) //returns false (the string representation 
 
 Validator.exactLength(3).apply(nil) //returns false since `nilResponse` is set to false by default
 
-Valuidator.exactLength(3, nilResponse: true).apply(nil) //returns true since we set nilResponse to true
+Validator.exactLength(3, nilResponse: true).apply(nil) //returns true since we set nilResponse to true
 ```
 
 For more examples on how to call each validator you can look at the [unit tests](https://github.com/gkaimakas/SwiftValidators/blob/master/SwiftValidatorsTests/ValidatorSpec.swift).
